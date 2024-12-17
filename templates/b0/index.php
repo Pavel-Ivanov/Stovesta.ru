@@ -17,13 +17,13 @@
     <script src="/templates/b0/js/components/accordion.js"></script>
     <script src="/templates/b0/js/verticalDropdown.js"></script>
     
-    <script src='https://salebot.pro/js/salebot.js'></script>
+<!--    <script src='https://salebot.pro/js/salebot.js'></script>
     <script>
         SaleBotPro.init({
             onlineChatId: '995'
         });
     </script>
-</head>
+--></head>
 
 <body  class="tm-isblog tm-sidebar-width-20">
     <div class="uk-grid tm-wrapper" data-uk-grid-match>
@@ -138,7 +138,7 @@
         </div>
     </div>
     <!-- Top.Mail.Ru counter -->
-    <script>
+<!--    <script>
         var _tmr = window._tmr || (window._tmr = []);
         _tmr.push({id: "3282284", type: "pageView", start: (new Date()).getTime()});
         (function (d, w, id) {
@@ -150,6 +150,6 @@
         })(document, window, "tmr-code");
     </script>
     <noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3282284;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
-    <!-- /Top.Mail.Ru counter -->
+-->    <!-- /Top.Mail.Ru counter -->
 </body>
 </html>

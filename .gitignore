@@ -1,6 +1,8 @@
 .idea
 /.b0/
 /.osp/
+/administrator/cache/
+/administrator/logs/
 /bin/
 /cache/
 /cli/

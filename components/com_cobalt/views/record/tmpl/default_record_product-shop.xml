@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<name>b0_default</name>
+	<author>Pavel Ivanov</author>
+	<version>1.0.0</version>
+	<description>Template Sparepart full page</description>
+
+	<fields name="tmpl_params">
+		<fieldset name="general" label="Общие">
+		</fieldset>
+	</fields>
+
+	<fields name="tmpl_core">
+		<fieldset name="analytics" label="Аналитика">
+			<field name="yandex" type="radio" class="btn-group" default="0" label="Yandex" >
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field name="yandex_goal" type="text" maxlength="20" default="" label="ID цели Yandex" />
+			<field name="google" type="radio" class="btn-group" default="0" label="Google" >
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field name="google_goal" type="text" maxlength="20" default="" label="ID цели Google Tag Manager" />
+		</fieldset>
+		<fieldset name="modules" label="Модули">
+			<field name="module_callback" type="text" maxlength="3" required="true" default="" label="Модуль Заказать обратный звонок" />
+			<field name="module_minibanners" type="text" maxlength="3" required="true" default="" label="Модуль Мини баннеры" />
+		</fieldset>
+		<fieldset name="links" label="Ссылки">
+			<field name="how_to_buy_url" type="url" required="true" label="Ссылка Как купить в магазине" />
+			<field name="how_to_install_url" type="url" required="true" label="Ссылка Как установить в сервисе" />
+			<field name="discounts_url" type="url" required="true" label="Ссылка на страницу Программа лояльности" />
+			<field name="vk_url" type="url" required="true" label="Ссылка на группу ВКонтакте" />
+		</fieldset>
+		<fieldset name="images" label="Картинки">
+			<field name="vk_icon" type="url" required="true" label="Ссылка на иконку ВКонтакте" />
+			<field name="discount_card_icon" type="url" required="true" label="Ссылка на картинку Дисконтной карты" />
+			<field name="default_picture" type="url" required="true" label="Ссылка на картинку по умолчанию" />
+			<field name="default_video" type="url" required="true" label="Ссылка на видео по умолчанию" />
+		</fieldset>
+	</fields>
+</form>

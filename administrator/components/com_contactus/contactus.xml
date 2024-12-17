@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension type="component" version="3.0" method="upgrade">
+
+		<name>Contactus</name> 
+		<author>Artem Yegorov</author>
+		<creationDate>June 2017</creationDate>
+		<copyright>Copyright (C) 2017 Artem Yegorov All rights reserved.</copyright>
+		<license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+		<authorEmail>admin@joomly.ru</authorEmail>
+		<authorUrl>http://joomly.net</authorUrl>
+		<version>3.19</version>
+
+        <description>
+		Simple component for Contact Form creation.
+		</description>
+
+	<files>
+		<folder>models</folder>
+		<folder>tables</folder>
+		<folder>controllers</folder>
+		<folder>languages</folder>
+		<filename>controller.php</filename>
+		<filename>contactus.php</filename>
+		<filename>router.php</filename>
+		<filename>index.html</filename>
+	</files>
+	
+	<languages>
+		<language tag="en-GB">languages/en-GB.com_contactus.ini</language>
+		<language tag="ru-RU">languages/ru-RU.com_contactus.ini</language>
+		<language tag="es-ES">languages/es-ES.com_contactus.ini</language>
+		<language tag="en-GB">languages/en-GB.com_contactus.sys.ini</language>
+		<language tag="ru-RU">languages/ru-RU.com_contactus.sys.ini</language>
+		<language tag="es-ES">languages/es-ES.com_contactus.sys.ini</language>
+	</languages>
+	
+	<administration>
+
+		<menu link="option=com_contactus" alias="ContactUs">CONTACTUS</menu>	       
+			   
+		<files folder="admin">
+		    <folder>tables</folder>
+		    <folder>controllers</folder>
+		    <folder>models</folder>
+		    <folder>views</folder>
+			<folder>css</folder>
+			<filename>controller.php</filename>
+			<filename>contactus.php</filename>
+			<filename>router.php</filename>
+			<filename>index.html</filename>
+	    </files>
+		
+		<languages>
+			<language tag="en-GB">languages/en-GB.com_contactus.ini</language>
+			<language tag="ru-RU">languages/ru-RU.com_contactus.ini</language>
+			<language tag="es-ES">languages/es-ES.com_contactus.ini</language>
+			<language tag="en-GB">languages/en-GB.com_contactus.sys.ini</language>
+			<language tag="ru-RU">languages/ru-RU.com_contactus.sys.ini</language>
+			<language tag="es-ES">languages/es-ES.com_contactus.sys.ini</language>
+		</languages>
+
+ 	</administration>
+
+</extension>

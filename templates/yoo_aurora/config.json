@@ -1,0 +1,288 @@
+{
+	"compression": "0",
+	"warp_branding": "0",
+	"panel_default": {
+		"content-top": {
+			"panel": "uk-panel"
+		},
+		"top-a": {
+			"panel": "uk-panel"
+		},
+		"top-b": {
+			"panel": "uk-panel"
+		},
+		"top-c": {
+			"panel": "uk-panel"
+		},
+		"top-d": {
+			"panel": "uk-panel"
+		},
+		"bottom-a": {
+			"panel": "uk-panel"
+		},
+		"bottom-b": {
+			"panel": "uk-panel"
+		},
+		"bottom-c": {
+			"panel": "uk-panel"
+		},
+		"bottom-d": {
+			"panel": "uk-panel"
+		},
+		"main-top": {
+			"panel": "uk-panel"
+		},
+		"main-bottom": {
+			"panel": "uk-panel"
+		},
+		"sidebar-a": {
+			"panel": "uk-panel"
+		},
+		"sidebar-b": {
+			"panel": "uk-panel"
+		},
+		"content-bottom": {
+			"panel": "uk-panel"
+		}
+	},
+	"tracking_code": "",
+	"layouts": {
+		"default": {
+			"style": "logan-shop",
+			"sidebars": {
+				"sidebar-a": {
+					"width": "12",
+					"alignment": "left"
+				},
+				"sidebar-b": {
+					"width": "12",
+					"alignment": "left"
+				}
+			},
+			"grid": {
+				"content-top": {
+					"layout": "parallel",
+					"responsive": ""
+				},
+				"top-a": {
+					"layout": "stacked",
+					"responsive": ""
+				},
+				"top-b": {
+					"layout": "parallel",
+					"responsive": ""
+				},
+				"top-c": {
+					"layout": "parallel",
+					"responsive": ""
+				},
+				"top-d": {
+					"layout": "parallel",
+					"responsive": ""
+				},
+				"bottom-a": {
+					"layout": "parallel",
+					"responsive": ""
+				},
+				"bottom-b": {
+					"layout": "parallel",
+					"responsive": ""
+				},
+				"bottom-c": {
+					"layout": "parallel",
+					"responsive": ""
+				},
+				"bottom-d": {
+					"layout": "parallel",
+					"responsive": ""
+				},
+				"main-top": {
+					"layout": "parallel",
+					"responsive": ""
+				},
+				"main-bottom": {
+					"layout": "parallel",
+					"responsive": ""
+				},
+				"content-bottom": {
+					"layout": "parallel",
+					"responsive": "large"
+				}
+			},
+			"sidebar_width": "20"
+		}
+	},
+	"widgets": {
+		"1": {
+			"class": ""
+		},
+		"101": {
+			"class": ""
+		},
+		"104": {
+			"class": ""
+		},
+		"106": {
+			"class": "",
+			"panel": "",
+			"icon": "",
+			"badge": {
+				"type": "uk-panel-badge uk-badge",
+				"text": ""
+			},
+			"display": {
+				"large": "1",
+				"medium": "1",
+				"small": "0"
+			}
+		},
+		"134": {
+			"class": "",
+			"panel": "",
+			"icon": "",
+			"badge": {
+				"type": "uk-panel-badge uk-badge",
+				"text": ""
+			},
+			"display": {
+				"large": "1",
+				"medium": "1",
+				"small": "0"
+			}
+		},
+		"139": {
+			"class": "",
+			"panel": "",
+			"icon": "",
+			"badge": {
+				"type": "uk-panel-badge uk-badge",
+				"text": ""
+			},
+			"display": {
+				"large": "1",
+				"medium": "1",
+				"small": "1"
+			}
+		},
+		"142": {
+			"class": "",
+			"panel": "",
+			"icon": "",
+			"badge": {
+				"type": "uk-panel-badge uk-badge",
+				"text": ""
+			},
+			"display": {
+				"large": "1",
+				"medium": "1",
+				"small": "0"
+			}
+		},
+		"166": {
+			"class": "",
+			"panel": "",
+			"icon": "",
+			"badge": {
+				"type": "uk-panel-badge uk-badge",
+				"text": ""
+			},
+			"display": {
+				"large": "1",
+				"medium": "1",
+				"small": "0"
+			}
+		}
+	},
+	"menus": {
+		"107": {
+			"columns": "1",
+			"columnwidth": "",
+			"icon": ""
+		},
+		"110": {
+			"columns": "1",
+			"columnwidth": "",
+			"icon": ""
+		},
+		"111": {
+			"columns": "1",
+			"columnwidth": "",
+			"icon": ""
+		},
+		"112": {
+			"columns": "1",
+			"columnwidth": "",
+			"icon": ""
+		},
+		"113": {
+			"columns": "1",
+			"columnwidth": "",
+			"icon": ""
+		},
+		"118": {
+			"columns": "1",
+			"columnwidth": "",
+			"icon": ""
+		},
+		"127": {
+			"columns": "1",
+			"columnwidth": "",
+			"icon": ""
+		},
+		"159": {
+			"columns": "1",
+			"columnwidth": "",
+			"icon": ""
+		},
+		"190": {
+			"columns": "1",
+			"columnwidth": "",
+			"icon": ""
+		},
+		"191": {
+			"columns": "1",
+			"columnwidth": "",
+			"icon": ""
+		},
+		"192": {
+			"columns": "1",
+			"columnwidth": "",
+			"icon": ""
+		},
+		"221": {
+			"columns": "1",
+			"columnwidth": "",
+			"icon": ""
+		},
+		"223": {
+			"columns": "1",
+			"columnwidth": "",
+			"icon": ""
+		},
+		"243": {
+			"columns": "1",
+			"columnwidth": "",
+			"icon": ""
+		},
+		"260": {
+			"columns": "1",
+			"columnwidth": "",
+			"icon": ""
+		},
+		"273": {
+			"columns": "1",
+			"columnwidth": "",
+			"icon": ""
+		},
+		"281": {
+			"columns": "1",
+			"columnwidth": "",
+			"icon": ""
+		},
+		"336": {
+			"columns": "1",
+			"columnwidth": "",
+			"icon": ""
+		}
+	}
+}

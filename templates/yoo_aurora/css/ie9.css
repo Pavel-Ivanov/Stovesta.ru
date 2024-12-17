@@ -1,0 +1,22 @@
+/* Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/*
+ * Name:			IE9
+ * Description:		Defines styles for Internet Explorer 9
+ *
+ ========================================================================== */
+
+/* Fixing animation issue on uk-scrollspy */
+[data-uk-scrollspy*='uk-animation-'] { opacity: 1; }
+
+
+/* Let's target IE to respect aspect ratios and sizes for img tags containing SVG files */
+.uk-flex-middle img[src*=".svg"] {
+    width: 100%;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .uk-flex-middle img[src*=".svg"] {
+        width: 100%;
+    }
+}

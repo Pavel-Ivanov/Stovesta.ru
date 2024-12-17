@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension type="module" version="3.0" client="site" method="upgrade">
+    <name>B0 Популярные</name>
+    <creationDate>May 2020</creationDate>
+    <copyright>2016 Pavel Ivanov</copyright>
+    <license>GNU General Public License версии 2 или более поздней</license>
+    <author>Pavel Ivanov</author>
+    <authorEmail>p.ivanov.spb@gmail.com</authorEmail>
+    <version>1.0.0</version>
+    <description>Популярные товары</description>
+	
+	<files>
+		<filename module="mod_b0_popular_items">mod_b0_popular_items.php</filename>
+		<filename>mod_b0_popular_items.xml</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+	</files>
+
+	<config>
+        <fields name="params">
+            <fieldset label="General" name="general">
+                <field name="section_id" type="meresourcessection" select="1" type_elem_name="types" default="" label="Раздел" required="true"/>
+                <field name="type_id" type="mertype" default="" label="Тип контента" required="true" />
+                <field name="limit" type="text" label="Лимит записей" size="3" default="6"/>
+                <field name="norecords" type="text" label="Сообщение, если ничего не найдено" description="Сообщение, которое показывается, если ничего не найдено."/>
+                <field name="layout" type="modulelayout" label="Шаблон" description="Шаблон модуля"/>
+            </fieldset>
+        </fields>
+	</config>
+</extension>

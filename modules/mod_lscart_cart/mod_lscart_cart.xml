@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension type="module" version="3.0" client="site" method="upgrade">
+    <name>MOD_LSCART_CART</name>
+    <creationDate>September 2016</creationDate>
+    <copyright>2016 Pavel Ivanov</copyright>
+    <license>GNU General Public License версии 2 или более поздней</license>
+    <author>Pavel Ivanov</author>
+    <authorEmail>p.ivanov.spb@gmail.com</authorEmail>
+    <authorUrl>https://stovesta.ru</authorUrl>
+    <version>1.0.0</version>
+    <description>Module for Shopping cart</description>
+	
+	<files>
+		<filename module="mod_lscart_cart">mod_lscart_cart.php</filename>
+		<filename>mod_lscart_cart.xml</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+	</files>
+	
+	<languages folder="language">
+        <language tag="ru-RU">ru-RU/ru-RU.mod_lscart_cart.ini</language>
+		<language tag="ru-RU">ru-RU/ru-RU.mod_lscart_cart.sys.ini</language>
+    </languages>
+	
+	<config>
+        <fields name="params">
+            <fieldset label="General" name="general">
+                <field name="layout" type="modulelayout" label="Шаблон" description="Шаблон модуля"/>
+            </fieldset>
+        </fields>
+	</config>
+
+
+</extension>

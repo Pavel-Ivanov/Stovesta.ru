@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<name>Maintenance Category</name>
+	<author>Pavel Ivanov</author>
+	<version>1.00</version>
+	<description>Template Maintenance Category layout</description>
+
+	<!-- Основные параметры -->
+	<fields name="main">
+		<!-- Общие параметры -->
+		<fieldset name="general">
+			<!-- Иконка категории -->
+			<field name="section_icon" type="media" default="" label="Иконка категории" />
+			<!-- Название модели -->
+			<field name="model_name" type="text" maxlength="40" default="" label="Название модели" />
+			<!-- Файл конфигурации -->
+			<field name="config_file" type="text" maxlength="40" default="" label="Название файла конфигурации" />
+			<!-- Модуль- регламент ТО -->
+			<field name="module_1" type="text" maxlength="3" default="" label="Модуль Регламент ТО" />
+			<!-- Модуль- записаться на ТО -->
+			<field name="module_2" type="text" maxlength="3" default="" label="Модуль Записаться на ТО" />
+			<!-- Модуль- prefix -->
+			<field name="module_prefix" type="text" maxlength="3" default="" label="Модуль Prefix" />
+			<!-- Модуль- suffix -->
+			<field name="module_suffix" type="text" maxlength="3" default="" label="Модуль Suffix" />
+			<!-- Модуль- мини баннеры -->
+			<field name="module_minibanners" type="text" maxlength="3" required="true" default="" label="Модуль Мини баннеры" />
+			<!-- ВКонтакте -->
+			<field name="module_3" type="text" maxlength="3" default="" label="Модуль ВКонтакте" />
+			<field name="vk_url" type="url" required="true" label="Ссылка на группу ВКонтакте" />
+			<field name="vk_icon" type="url" required="true" label="Ссылка на иконку ВКонтакте" />
+			<!-- Ссылка- Контакты -->
+			<field name="link_contacts" type="text" default="" label="Ссылка Контакты" />
+			<!-- Ссылка- Гарантийные обязательства -->
+			<field name="link_quarantee" type="text" default="" label="Ссылка Гарантийные обязательства" />
+		</fieldset>
+		<!-- Альфа-индекс -->
+		<fieldset name="alpha" label="Альфа индекс">
+		</fieldset>
+	</fields>
+	<!-- Заголовки -->
+	<fields name="title">
+		<fieldset name="title" label="CTITLE">
+			<field name="title_show" type="list" default="1" label="X_SHOWTITLE">
+				<option value="0">X_TITLENO</option>
+				<option value="1">X_TITLESECCAT</option>
+				<option value="2">X_TITLEMENUPARAM</option>
+				<option value="3">X_TITLECUSTOM</option>
+			</field>
+			<field name="title_section_name" type="radio" class="btn-group" default="1" label="X_SECINTITLE">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="title_category_name" type="radio" class="btn-group" default="1" label="X_CATINTITLE">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="title_static" type="text" size="40" default="This is static title in markup template parameters" label="X_TITLECUSTOMSTAT" />
+		</fieldset>
+		<fieldset name="t1" label="CUSERLISTTITLES">
+		</fieldset>
+		<fieldset name="t2" label="CMYLISTTITLES">
+		</fieldset>
+	</fields>
+	<!-- Меню раздела -->
+	<fields name="menu">
+		<fieldset name="menu" label="CMENUSTYLE">
+			<field name="menu" type="radio" class="btn-group" default="1" label="CENABLEMENU">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="menu_home" type="radio" class="btn-group" default="1" label="CENABLEMENUHOME">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+		</fieldset>
+
+		<fieldset name="micons" label="CMENUICONS">
+		</fieldset>
+
+		<fieldset name="m1" label="CUSERMENUICONS">
+		</fieldset>
+
+		<fieldset name="m2" label="CORDERICONS">
+		</fieldset>
+
+		<fieldset name="m3" label="CMENUELEMENTS">
+			<field name="menu_user" type="accesslevel" default="2" label="X_USERMENU">
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="menu_templates" type="accesslevel" default="1" label="X_TEMPLATESWITCH" >
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="menu_newrecord" type="accesslevel" default="1" label="X_NEWREC" >
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="menu_newrecord_home" type="accesslevel" default="1" label="X_NEWRECNOME" >
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="menu_ordering" type="accesslevel" default="1" label="X_RECORDER" >
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="menu_all" type="radio" class="btn-group" default="1" label="X_ALLRECORDS" >
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="menu_home_button" type="radio" class="btn-group" default="1" label="X_HOMELABEL2" >
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="menu_up" type="radio" class="btn-group" default="1" label="X_UPLABEL" >
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="menu_user_numbers" type="radio" default="1" class="btn-group"  label="X_USERMENUSHOWNUM" >
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="menu_templates_sort" type="list" default="1" label="X_TEMPLATESWITCHSORT" >
+				<option value="0">CSORTASIS</option>
+				<option value="1">CSORTBYNAME</option>
+			</field>
+		</fieldset>
+
+		<fieldset name="m4" label="C_WHOCANORDERBY">
+			<field name="menu_order_ctime" type="accesslevel" default="1" label="CCREATED">
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="menu_order_mtime" type="accesslevel" default="1" label="CMODIFIED">
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="menu_order_title" type="accesslevel" default="1" label="CTITLE">
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="menu_order_hits" type="accesslevel" default="1" label="CHITS">
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="menu_order_username" type="accesslevel" default="1" label="CAUTHORNAME">
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="menu_order_votes_result" type="accesslevel" default="1" label="CRATING">
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="menu_order_comments" type="accesslevel" default="1" label="COMMENTNUM">
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="menu_order_favorite_num" type="accesslevel" default="1" label="CFAVORNUM">
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="menu_order_fields" type="accesslevel" default="1" label="X_ORDERFIELDS">
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+		</fieldset>
+
+		<fieldset name="m5" label="Ordering Labels">
+		</fieldset>
+
+		<fieldset name="m6" label="X_USERMENU">
+		</fieldset>
+
+		<fieldset name="mlabels" label="CMENUROOT">
+		</fieldset>
+
+		<fieldset name="mlabels2" label="CUSERMENULABELS">
+		</fieldset>
+	</fields>
+	<!-- Фильтры -->
+	<fields name="filters">
+		<fieldset name="filters" label="CFILTERS">
+			<field name="filters" type="radio" class="btn-group" default="1" label="CENABLEFILTERS">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="filters_home" type="radio" class="btn-group" default="1" label="CENABLEFILTERSHOME">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="worns" type="radio" class="btn-group" default="1" label="X_FILTERWORNINGS">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+		</fieldset>
+		<fieldset name="f2" label="X_FILTERMODES">
+			<field name="filter_descr" type="radio" class="btn-group" default="1" label="X_SHOWFILTERDESCR">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="filter_type_type" type="list" default="1" label="X_FILTERCONTMODE">
+				<option value="1">CCHECKBOXES</option>
+				<option value="2">CSELECT</option>
+			</field>
+			<field name="filter_users_type" type="list" default="1" label="X_FILTER_AUTHMOD">
+				<option value="1">CAUTOCOMPLETE</option>
+				<option value="2">CCHECKBOXES</option>
+				<option value="3">CSELECT</option>
+			</field>
+			<field name="filter_category_type" type="list" default="1" label="X_FILTERCATMODE">
+				<option value="1">CAUTOCOMPLETE</option>
+				<option value="2">CCHECKBOXES</option>
+				<option value="3">CCINGLESELECT</option>
+				<option value="4">CMULTISELECT</option>
+				<option value="5">CAJAXSELECT</option>
+			</field>
+			<field name="filter_tags_type" type="list" default="1" label="X_FILTERTAGMODE">
+				<option value="1">CAUTOCOMPLETE</option>
+				<option value="2">CCHECKBOXES</option>
+				<option value="3">CSELECT</option>
+				<option value="4">CCLOUD</option>
+			</field>
+		</fieldset>
+		<fieldset name="f3" label="CFILTERICONS">
+			<field name="filter_type_icon" type="radio" class="btn-group" default="1" label="CCONTENTTYPES">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="filter_user_icon" type="radio" class="btn-group" default="1" label="CAUTHORS">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="filter_tag_icon" type="radio" class="btn-group" default="1" label="CTAGS">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="filter_category_icon" type="radio" class="btn-group" default="1" label="CCATEGORIES">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="filter_fields_icon" type="radio" class="btn-group" default="1" label="CFIELDS">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+		</fieldset>
+		<fieldset name="f4" label="CFILTERLABELS">
+			<field name="type_label" type="text" size="40" default="Content Type" label="CCONTENTTYPES" />
+			<field name="tag_label" type="text" size="40" default="Tags" label="CTAGS" />
+			<field name="user_label" type="text" size="40" default="Author" label="CAUTHOR" />
+			<field name="category_label" type="text" size="40" default="Category" label="CCATEGORIES" />
+		</fieldset>
+		<fieldset name="f5" label="CGENERALFILTERS">
+			<field name="show_search" type="accesslevel" default="1" label="C_WHOCANSEARCHTEXT">
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="show_more" type="accesslevel" default="1" label="C_WHOFILTERS">
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+		</fieldset>
+		<fieldset name="f6" label="C_ADDIFILTERS">
+			<field name="filter_type" type="accesslevel" default="1" label="CCONTENTTYPES" description="CFILETRTYPEDESCR">
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="filter_cat" type="accesslevel" default="1" label="CCATEGORIES">
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="filter_user" type="accesslevel" default="1" label="CAUTHORS">
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="filter_tags" type="accesslevel" default="1" label="CTAGS">
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="filter_fields" type="accesslevel" default="1" label="CFIELDS">
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+		</fieldset>
+	</fields>
+	<!-- Персонализация -->
+	<fields name="personal">
+		<fieldset name="user" label="CUSERCATEGORIES">
+		</fieldset>
+		<fieldset name="uinfo" label="FS_USERINFO" description="FS_USERINFODESC">
+		</fieldset>
+	</fields>
+</form>

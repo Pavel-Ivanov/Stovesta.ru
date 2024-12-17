@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="b0_clear_section"  addfieldpath="/libraries/mint/forms/fields" label="Clear section" description="Simply click button">
+        <field name="section_id" type="meresourcessection" default="" alias="1" label="Choose Section" global="0" append="" />
+        <field name="delete_categories" type="radio" class="btn-group" default="0" label="Удалять категории">
+            <option value="0">CNO</option>
+            <option value="1">CYES</option>
+        </field>
+        <field name="delete_section" type="radio" class="btn-group" default="0" label="Удалять сам раздел">
+            <option value="0">CNO</option>
+            <option value="1">CYES</option>
+        </field>
+    </fieldset>
+</form>

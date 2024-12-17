@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="base">
+        <field name="id" type="hidden"></field>
+        <field name="phone" type="tel" default="" label="Телефон" description="Телефон клиента" required="true"></field>
+        <field name="created" type="calendar" default="NOW" label="Дата заказа" description="Дата создания заказа" required="true" format="%d-%m-%Y"></field>
+    </fieldset>
+</form>

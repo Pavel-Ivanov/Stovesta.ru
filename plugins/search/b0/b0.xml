@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="search" method="upgrade">
+	<name>Search - b0</name>
+	<author>Pavel Ivanov</author>
+	<license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+	<authorEmail>p.ivanov.spb@gmail.com</authorEmail>
+	<authorUrl></authorUrl>
+	<creationDate>December 2016</creationDate>
+	<copyright>(c) 2016 b0</copyright>
+	<version>1.00</version>
+	<description>Search Plugin for StoVesta</description>
+	<files>
+		<filename plugin="b0">b0.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/libraries/mint/forms/fields/">
+				<field name="search_limit" type="text" default="50" label="Search Limit" size="5" />
+                <field name="sections" type="meresourcessection" multi="1" label="Exclude Sections" description="Sections to exclude from search" />
+                <field name="show_restricted" type="radio" class="btn-group" default="1" label="Show in result articles from restricted sections?">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

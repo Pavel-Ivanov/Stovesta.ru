@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="7.0.0" type="file" method="upgrade">
+<name>Русский язык для JCH Optimize Pro</name>
+<packagename>JCH Optimize Pro ru-RU</packagename>
+<version>7.0.0</version>
+<creationDate>11 сентября 2021</creationDate>
+<packager>aleksius.com</packager>
+<packagerEmail>email@aleksius.com</packagerEmail>
+<packagerurl>https://aleksius.com</packagerurl>
+<tag>ru-RU</tag>
+<author>Хорошевский Алексей</author>
+<authorEmail>email@aleksius.com</authorEmail>
+<authorUrl>https://aleksius.com</authorUrl>
+<description><![CDATA[
+  <div align="center">
+    <table border="0" width="90%">
+	    <tr>
+		    <td width="100%" colspan="2">
+			<div align="center"> <a href="https://aleksius.com/" target="_blank"><img border="0" src="https://aleksius.com/templates/aleksius_com.png" alt="aleksius.com" /></a>
+		      <div align="center"> 
+				<h3>JCH Optimize Pro 7.0.0</h3>
+		      </div>
+		      <hr />
+		    </td>
+	    </tr>
+	    <tr>
+		    <td width="18%"><u><b>Язык:</b></u></td>
+		    <td width="80%">Русский</td>
+	    </tr>
+	    <tr>
+		    <td width="18%"><u><b>Часть сайта:</b></u></td>
+		    <td width="80%">Административная</td>
+	    </tr>
+	    <tr>
+		    <td width="18%"><u><b>Автор:</b></u></td>
+		    <td width="80%">Хорошевский Алексей</td>
+	    </tr>
+	    <tr>
+		    <td width="18%"><u><b>Сайт:</b></u></td>
+		    <td width="80%"><a href="https://aleksius.com" target="_blank">https://aleksius.com</a></td>
+	    </tr>
+	    <tr>
+		    <td width="18%"><u><b>Перевод для версии:</b></u></td>
+		    <td width="80%">7.0.0</td>
+	    </tr>
+	    <tr>
+		    <td width="100%" colspan="2">
+		      <p align="center"><b><font color="#008000">Проверьте сайт <a href="https://aleksius.com/joomla/rusifikatory/rusifikator-jch-optimize-pro" target="_blank">Aleksius.com</a>, скачайте новую версию перевода данного расширения. Справка и обзор на русском языке <a href="https://aleksius.com/jch-optimize" target="_blank">доступна по этой ссылке</a>.</font></b></td>
+	    </tr>
+    </table>
+  </div>]]></description>
+<fileset>
+<files folder="admin" target="administrator/language/ru-RU">
+		  <filename>ru-RU.com_jchoptimize.ini</filename>
+		  <filename>ru-RU.com_jchoptimize.sys.ini</filename>
+		  <filename>ru-RU.mod_jchmodeswitcher.ini</filename>
+		  <filename>ru-RU.plg_system_jchoptimize.ini</filename>
+		  <filename>ru-RU.plg_system_jchoptimize.sys.ini</filename>
+</files>
+<files folder="fof" target="language/ru-RU">
+		  <filename>ru-RU.lib_fof40.ini</filename>
+</files>
+</fileset>
+</extension>

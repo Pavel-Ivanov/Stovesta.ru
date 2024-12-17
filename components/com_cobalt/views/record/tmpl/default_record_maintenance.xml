@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<name>Maintenance</name>
+	<author>Pavel Ivanov</author>
+	<version>1.00</version>
+	<description>Template Maintenance full page</description>
+
+	<fields name="tmpl_params">
+		<fieldset name="general" label="Общие">
+			<field name="item_time_format" type="list" default="l, d F Y" label="Формат даты" >
+				<option value="l, d F Y">Tuesday, 30 December 2007</option>
+				<option value="d F Y">30 December 2007</option>
+				<option value="d.m.y">30.12.07</option>
+			</field>
+			<field name="item_print" type="radio" class="btn-group" default="0" label="Иконка печати" >
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+		</fieldset>
+	</fields>
+	<fields name="tmpl_core">
+		<fieldset name="modules" label="Модули">
+			<field name="module_1" type="text" maxlength="3" required="true" default="" label="Модуль Записаться на ТО" />
+			<field name="module_2" type="text" maxlength="3" required="true" default="" label="Модуль Мини баннеры" />
+		</fieldset>
+		<fieldset name="vk" label="Группа ВКонтакте">
+			<field name="vk_url" type="url" required="true" label="Ссылка на группу ВКонтакте" />
+			<field name="vk_icon" type="url" required="true" label="Ссылка на иконку ВКонтакте" />
+		</fieldset>
+	</fields>
+</form>

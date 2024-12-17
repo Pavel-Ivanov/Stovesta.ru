@@ -1,0 +1,79 @@
+<?php
+/**
+ * @package   admintools
+ * @copyright Copyright (c)2010-2023 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @license   GNU General Public License version 3, or later
+ */
+
+namespace Akeeba\AdminTools\Admin\View\HtaccessMaker;
+
+defined('_JEXEC') || die;
+
+use Akeeba\AdminTools\Admin\Helper\ServerTechnology;
+use Akeeba\AdminTools\Admin\Model\HtaccessMaker;
+use FOF40\View\DataView\Html as BaseView;
+
+class Html extends BaseView
+{
+	/**
+	 * .htaccess contents for preview
+	 *
+	 * @var  string
+	 */
+	public $htaccess;
+
+	/**
+	 * The .htaccess Maker configuration
+	 *
+	 * @var  array
+	 */
+	public $htconfig;
+
+	/**
+	 * Is this supported? 0 No, 1 Yes, 2 Maybe
+	 *
+	 * @var  int
+	 */
+	public $isSupported;
+
+	/**
+	 * Should I enable www and non-www redirects, based on the value of $live_site?
+	 *
+	 * @var bool
+	 */
+	public $enableRedirects;
+
+	/**
+	 * Any PHP handler directives inside the server configuration file.
+	 *
+	 * @var string|null
+	 */
+	public $handlers = null;
+
+	protected function onBeforePreview()
+	{
+		/** @var HtaccessMaker $model */
+		$model          = $this->getModel();
+		$this->htaccess = $model->makeConfigFile();
+		$this->setLayout('plain');
+	}
+
+	protected function onBeforeMain()
+	{
+		/** @var HtaccessMaker $model */
+		$model                 = $this->getModel();
+		$this->htconfig        = $model->loadConfiguration();
+		$this->isSupported     = ServerTechnology::isHtaccessSupported();
+		$this->enableRedirects = $model->enableRedirects();
+		$this->handlers        = $model->getPhpHandlers();
+
+		// If we have PHP handlers inside the .htaccess file BUT we do have stored them inside the Custom Rules field,
+		// do not display any notice to the user
+		$data = $model->loadConfiguration();
+
+		if ($model->extractHandler($data->custfoot ?: '') === $this->handlers)
+		{
+			$this->handlers = null;
+		}
+	}
+}

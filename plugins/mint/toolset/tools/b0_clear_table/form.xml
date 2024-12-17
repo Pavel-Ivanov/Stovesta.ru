@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="b0_clear_table"  addfieldpath="/libraries/mint/forms/fields" label="Clear table" description="Simply click button">
+        <field name="table_name" type="list" label="Таблица">
+            <option value="#__js_res_hits">Hits</option>
+        </field>
+    </fieldset>
+</form>

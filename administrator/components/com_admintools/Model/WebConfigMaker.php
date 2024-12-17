@@ -1,0 +1,1114 @@
+<?php
+/**
+ * @package   admintools
+ * @copyright Copyright (c)2010-2023 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @license   GNU General Public License version 3, or later
+ */
+
+namespace Akeeba\AdminTools\Admin\Model;
+
+defined('_JEXEC') || die;
+
+use Akeeba\AdminTools\Admin\Helper\ServerTechnology;
+use DateTimeZone;
+use FOF40\Date\Date;
+
+class WebConfigMaker extends ServerConfigMaker
+{
+	/**
+	 * The default configuration of this feature.
+	 *
+	 * Note that you define an array. It becomes an object in the constructor. We have to do that since PHP doesn't
+	 * allow the intitialisation of anonymous objects (like e.g. Javascript) but lets us typecast an array to an object
+	 * – just not in the property declaration!
+	 *
+	 * @var  object
+	 */
+	public $defaultConfig = [
+		// == System configuration ==
+		// Host name for HTTPS requests (without https://)
+		'httpshost'           => '',
+		// Host name for HTTP requests (without http://)
+		'httphost'            => '',
+		// Base directory of your site (/ for domain's root)
+		'rewritebase'         => '',
+
+		// == Optimization and utility ==
+		// Force index.php parsing before index.html
+		'fileorder'           => 1,
+		// Set default expiration time to 1 hour
+		'exptime'             => 0,
+		// Automatically compress static resources
+		'autocompress'        => 0,
+		// Redirect index.php to root
+		'autoroot'            => 1,
+		// Redirect www and non-www addresses
+		'wwwredir'            => 0,
+		// Redirect old to new domain
+		'olddomain'           => '',
+		// Force HTTPS for these URLs
+		'httpsurls'           => [],
+		// HSTS Header (for HTTPS-only sites)
+		'hstsheader'          => 0,
+		// Disable HTTP methods TRACE and TRACK (protect against XST)
+		'notracetrack'        => 0,
+		// Cross-Origin Resource Sharing (CORS)
+		'cors'                => 0,
+		// Set UTF-8 charset as default
+		'utf8charset'         => 1,
+		// Send ETag
+		'etagtype'            => 'default',
+		// Referrer policy
+		'referrerpolicy'      => 'unsafe-url',
+
+		// == Basic security ==
+		// Disable directory listings
+		'nodirlists'          => 1,
+		// Protect against common file injection attacks
+		'fileinj'             => 1,
+		// Disable PHP Easter Eggs
+		'phpeaster'           => 1,
+		// Block access from specific user agents
+		'nohoggers'           => 0,
+		// Block access to configuration.php-dist and web.config.txt
+		'leftovers'           => 1,
+		// Protect against clickjacking
+		'clickjacking'        => 1,
+		// Reduce MIME type security risks
+		'reducemimetyperisks' => 1,
+		// Reflected XSS prevention
+		'reflectedxss'        => 1,
+		// Remove Apache and PHP version signature
+		'noserversignature'   => 1,
+		// Prevent content transformation
+		'notransform'         => 1,
+		// User agents to block (one per line)
+		'hoggeragents'        => [
+			'acapbot',
+			'acoonbot',
+			'acunetix',
+			'ahrefs',
+			'alexibot',
+			'archiver',
+			'asterias',
+			'attackbot',
+			'awario',
+			'backdor',
+			'base64_decode',
+			'becomebot',
+			'bin/bash',
+			'binlar',
+			'blackwidow',
+			'blekkobot',
+			'blex',
+			'blowfish',
+			'bolt 0',
+			'bot for jce',
+			'bot mailto:craftbot@yahoo.com',
+			'bullseye',
+			'bunnys',
+			'butterfly',
+			'c99shell',
+			'careerbot',
+			'casper',
+			'casper',
+			'cazoodlebot',
+			'checkpriv',
+			'checkprivacy',
+			'cheesebot',
+			'cherrypick',
+			'chinaclaw',
+			'chinaclaw',
+			'choppy',
+			'clshttp',
+			'clshttp',
+			'cmsworld',
+			'cmsworldmap',
+			'comodo',
+			'copernic',
+			'copyrightcheck',
+			'cosmos',
+			'crescent',
+			'custo',
+			'datacha',
+			'default browser 0',
+			'demon',
+			'diavol',
+			'diibot',
+			'disco',
+			'discobot',
+			'disconnect',
+			'dittospyder',
+			'dotbot',
+			'dotnetdotcom',
+			'download demon',
+			'dumbot',
+			'ecatch',
+			'econtext',
+			'ecxi',
+			'eirgrabber',
+			'emailcollector',
+			'emailsiphon',
+			'emailwolf',
+			'eolasbot',
+			'eval',
+			'eventures',
+			'express webpictures',
+			'extract',
+			'extractorpro',
+			'eyenetie',
+			'feedfinder',
+			'fhscan',
+			'flaming',
+			'flashget',
+			'flicky',
+			'foobot',
+			'fuck',
+			'g00g1e',
+			'getright',
+			'getweb!',
+			'gigabot',
+			'go!zilla',
+			'go-ahead-got',
+			'go-ahead-got-it',
+			'gozilla',
+			'grab',
+			'grabnet',
+			'grafula',
+			'gt::www',
+			'harvest',
+			'heritrix',
+			'hmview',
+			'http::lite',
+			'httrack',
+			'httracks',
+			'ia_archiver',
+			'icarus6j',
+			'id-search',
+			'id-search.org',
+			'idbot',
+			'image stripper',
+			'image sucker',
+			'indy library',
+			'interget',
+			'internet ninja',
+			'internetseer.com',
+			'irlbot',
+			'isc systems irc search 2.1',
+			'jakarta',
+			'java',
+			'jetbot',
+			'jetcar',
+			'jikespider',
+			'joc web spider',
+			'kmccrew',
+			'larbin',
+			'leechftp',
+			'libweb',
+			'libwww',
+			'libwww-perl',
+			'liebaofast',
+			'linkscan',
+			'linksmanager.com_bot',
+			'linkwalker',
+			'loader',
+			'lwp-download',
+			'lwp-trivial',
+			'majestic',
+			'mass downloader',
+			'masscan',
+			'maxthon$',
+			'mechanize',
+			'mfc_tear_sample',
+			'microsoft url control',
+			'microsoft.url',
+			'midown tool',
+			'miner',
+			'missigua locator',
+			'mister pix',
+			'mj12bot',
+			'morfeus',
+			'moveoverbot',
+			'msfrontpage',
+			'navroad',
+			'nearsite',
+			'net vampire',
+			'netants',
+			'netmechanic',
+			'netspider',
+			'netzip',
+			'newt',
+			'nicerspro',
+			'nikto',
+			'ninja',
+			'nominet',
+			'nutch',
+			'octopus',
+			'offline explorer',
+			'offline navigator',
+			'pagegrabber',
+			'panscient.com',
+			'papa foto',
+			'pavuk',
+			'pcbrowser',
+			'pecl::http',
+			'peoplepal',
+			'petalbot',
+			'phpcrawl',
+			'phpshell',
+			'planetwork',
+			'pleasecrawl',
+			'postrank',
+			'proximic',
+			'psbot',
+			'purebot',
+			'pycurl',
+			'queryn',
+			'queryseeker',
+			'radian6',
+			'radiation',
+			'realdownload',
+			'reget',
+			'remoteview',
+			'rippers 0',
+			'rogerbot',
+			'sbider',
+			'scan',
+			'scooter',
+			'seamonkey$',
+			'seekerspid',
+			'semalt',
+			'siclab',
+			'sindice',
+			'sistrix',
+			'sitebot',
+			'sitecheck.internetseer.com',
+			'sitecopier',
+			'siteexplorer',
+			'sitesnagger',
+			'skygrid',
+			'smartdownload',
+			'snoopy',
+			'sosospider',
+			'spankbot',
+			'spbot',
+			'sqlmap',
+			'stackrambler',
+			'steeler',
+			'stripper',
+			'sucker',
+			'superbot',
+			'superhttp',
+			'surfbot',
+			'surftbot',
+			'sux0r',
+			'suzukacz',
+			'suzuran',
+			'takeout',
+			'teleport',
+			'teleport pro',
+			'telesoft',
+			'toata dragostea mea pentru diavola',
+			'true_robots',
+			'turingos',
+			'turnit',
+			'turnitinbot',
+			'unserializ',
+			'uri::fetch',
+			'urllib',
+			'vampire',
+			'vikspider',
+			'voideye',
+			'web image collector',
+			'web sucker',
+			'webalta',
+			'webauto',
+			'webbandit',
+			'webcollage',
+			'webcopier',
+			'webfetch',
+			'webgo is',
+			'webleacher',
+			'webreaper',
+			'websauger',
+			'webshell',
+			'website extractor',
+			'website quester',
+			'webstripper',
+			'webvac',
+			'webviewer',
+			'webwhacker',
+			'webzip',
+			'wells search ii',
+			'wep search',
+			'wget',
+			'widow',
+			'winhttp',
+			'woxbot',
+			'www-mechanize',
+			'wwwoffle',
+			'xaldon',
+			'xaldon webspider',
+			'xxxyy',
+			'yamanalab',
+			'yioopbot',
+			'youda',
+			'zermelo',
+			'zeus',
+			'zmeu',
+			'zune',
+			'zyborg',
+		],
+
+		// == Server protection ==
+		// -- Toggle protection
+		// Back-end protection
+		'backendprot'         => 1,
+		// Back-end protection
+		'frontendprot'        => 1,
+		// -- Fine-tuning
+		// Back-end directories where file type exceptions are allowed
+		'bepexdirs'           => ['components', 'modules', 'templates', 'images', 'plugins'],
+		// Back-end file types allowed in selected directories
+		'bepextypes'          => [
+			'jpe', 'jpg', 'jpeg', 'jp2', 'jpe2', 'png', 'gif', 'bmp', 'css', 'js',
+			'swf', 'html', 'mpg', 'mp3', 'mpeg', 'mp4', 'avi', 'wav', 'ogg', 'ogv',
+			'xls', 'xlsx', 'doc', 'docx', 'ppt', 'pptx', 'zip', 'rar', 'pdf', 'xps',
+			'txt', '7z', 'svg', 'odt', 'ods', 'odp', 'flv', 'mov', 'htm', 'ttf',
+			'woff', 'woff2', 'eot', 'webp', 'xsl',
+			'JPG', 'JPEG', 'PNG', 'GIF', 'CSS', 'JS', 'TTF', 'WOFF', 'WOFF2', 'EOT', 'WEBP',
+		],
+		// Front-end directories where file type exceptions are allowed
+		'fepexdirs'           => [
+			'components', 'modules', 'templates', 'images', 'plugins', 'media', 'libraries', 'media/jui/fonts',
+		],
+		// Front-end file types allowed in selected directories
+		'fepextypes'          => [
+			'jpe', 'jpg', 'jpeg', 'jp2', 'jpe2', 'png', 'gif', 'bmp', 'css', 'js',
+			'swf', 'html', 'mpg', 'mp3', 'mpeg', 'mp4', 'avi', 'wav', 'ogg', 'ogv',
+			'xls', 'xlsx', 'doc', 'docx', 'ppt', 'pptx', 'zip', 'rar', 'pdf', 'xps',
+			'txt', '7z', 'svg', 'odt', 'ods', 'odp', 'flv', 'mov', 'ico', 'htm',
+			'ttf', 'woff', 'woff2', 'eot', 'webp', 'xsl',
+			'JPG', 'JPEG', 'PNG', 'GIF', 'CSS', 'JS', 'TTF', 'WOFF', 'WOFF2', 'EOT', 'WEBP',
+		],
+		// -- Exceptions
+		// Allow direct access to these files
+		'exceptionfiles'      => [
+			"administrator/components/com_akeeba/restore.php",
+			"administrator/components/com_akeebabackup/restore.php",
+			"administrator/components/com_joomlaupdate/restore.php",
+			"administrator/components/com_joomlaupdate/extract.php",
+		],
+		// Allow direct access, except .php files, to these directories
+		'exceptiondirs'       => [
+			'.well-known',
+		],
+		// Allow direct access, including .php files, to these directories
+		'fullaccessdirs'      => [
+			"templates/your_template_name_here",
+		],
+	];
+
+	/**
+	 * The current configuration of this feature
+	 *
+	 * @var  object
+	 */
+	protected $configKey = 'wcconfig';
+
+	/**
+	 * The methods which are allowed to call the saveConfiguration method. Each line is in the format:
+	 * Full\Class\Name::methodName
+	 *
+	 * @var  array
+	 */
+	protected $allowedCallersForSave = [
+		'Akeeba\AdminTools\Admin\Controller\ServerConfigMaker::reset',
+		'Akeeba\AdminTools\Admin\Controller\ServerConfigMaker::apply',
+		'Akeeba\AdminTools\Admin\Controller\ServerConfigMaker::save',
+		'Akeeba\AdminTools\Admin\Controller\WebConfigMaker::reset',
+		'Akeeba\AdminTools\Admin\Controller\WebConfigMaker::apply',
+		'Akeeba\AdminTools\Admin\Controller\WebConfigMaker::save',
+		'Akeeba\AdminTools\Admin\Model\QuickStart::applyHtmaker',
+		'Akeeba\AdminTools\Admin\Model\QuickStart::applyWcmaker',
+	];
+
+	/**
+	 * The methods which are allowed to call the writeConfigFile method. Each line is in the format:
+	 * Full\Class\Name::methodName
+	 *
+	 * @var  array
+	 */
+	protected $allowedCallersForWrite = [
+		'Akeeba\AdminTools\Admin\Controller\ServerConfigMaker::apply',
+		'Akeeba\AdminTools\Admin\Controller\WebConfigMaker::apply',
+		'Akeeba\AdminTools\Admin\Controller\ControlPanel::regenerateServerConfig',
+		'Akeeba\AdminTools\Admin\Model\QuickStart::applyWcmaker',
+	];
+
+	/**
+	 * The methods which are allowed to call the makeConfigFile method. Each line is in the format:
+	 * Full\Class\Name::methodName
+	 *
+	 * @var  array
+	 */
+	protected $allowedCallersForMake = [
+		'Akeeba\AdminTools\Admin\Controller\ServerConfigMaker::apply',
+		'Akeeba\AdminTools\Admin\Controller\WebConfigMaker::apply',
+		'Akeeba\AdminTools\Admin\Model\ControlPanel::serverConfigEdited',
+		'Akeeba\AdminTools\Admin\Model\ServerConfigMaker::writeConfigFile',
+		'Akeeba\AdminTools\Admin\Model\WebConfigMaker::writeWebConfig',
+		'Akeeba\AdminTools\Admin\View\WebConfigMaker\Html::onBeforeMain',
+		'Akeeba\AdminTools\Admin\View\WebConfigMaker\Html::onBeforePreview',
+	];
+
+	/**
+	 * The base name of the configuration file being saved by this feature, e.g. ".htaccess". The file is always saved
+	 * in the site's root. Any old files under that name are renamed with a .admintools suffix.
+	 *
+	 * @var string
+	 */
+	protected $configFileName = 'web.config';
+
+	/**
+	 * Compile and return the contents of the web.config configuration file
+	 *
+	 * @return string
+	 */
+	public function makeConfigFile()
+	{
+		// Make sure we are called by an expected caller
+		ServerTechnology::checkCaller($this->allowedCallersForMake);
+
+		$isJoomla4 = version_compare(JVERSION, '3.999.999', 'gt');
+
+		$date = new Date();
+		$tz   = new DateTimeZone($this->container->platform->getUser()->getParam('timezone', $this->container->platform->getConfig()->get('offset', 'UTC')));
+		$date->setTimezone($tz);
+		$d       = $date->format('Y-m-d H:i:s T', true);
+		$version = ADMINTOOLS_VERSION;
+
+		$webConfig = <<< XML
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Security Enhanced & Highly Optimized .web.config File for Joomla!
+	automatically generated by Admin Tools $version on $d
+
+	Admin Tools is Free Software, distributed under the terms of the GNU
+	General Public License version 3 or, at your option, any later version
+	published by the Free Software Foundation.
+
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	!!                                                                       !!
+	!!  If you get an Internal Server Error 500 or a blank page when trying  !!
+	!!  to access your site, remove this file and try tweaking its settings  !!
+	!!  in the back-end of the Admin Tools component.                        !!
+	!!                                                                       !!
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+-->
+<configuration>
+	<system.webServer>
+
+XML;
+
+		$config = $this->loadConfiguration();
+
+		if ($config->fileorder == 1)
+		{
+			$webConfig .= <<< XML
+		<!-- File execution order -->
+		<defaultDocument enabled="true">
+			<files>
+				<clear />
+				<add value="index.php" />
+				<add value="index.html" />
+				<add value="index.htm" />
+			</files>
+		</defaultDocument>
+
+XML;
+		}
+
+		if ($config->nodirlists == 1)
+		{
+			$webConfig .= <<< XML
+		<!-- No directory listings -->
+		<directoryBrowse enabled="false" />
+
+XML;
+		}
+
+		if ($config->exptime != 0)
+		{
+			$setEtag  = ($config->etagtype == 'none') ? 'setEtag="false"' : '';
+			$eTagInfo = ($config->etagtype == 'none') ? '// Send ETag: false (IIS only supports true/false for ETags)' : '';
+
+			// Expiration time of 1 week or 1 year (based on selection)
+			$expTime = ($config->exptime == 1) ? 604800 : 31708800;
+
+			$webConfig .= <<< XML
+		<!-- Optimal default expiration time $eTagInfo -->
+		<staticContent>
+			<clientCache cacheControlMode="UseMaxAge" cacheControlMaxAge="$expTime" $setEtag />
+		</staticContent>
+
+XML;
+		}
+
+		if ($config->autocompress == 1)
+		{
+			$webConfig .= <<<XML
+		<urlCompression doStaticCompression="false" doDynamicCompression="true" />
+		<httpCompression>
+			<dynamicTypes>
+				<clear />
+				<add mimeType="text/*" enabled="true" />
+				<add mimeType="message/*" enabled="true" />
+				<add mimeType="application/xml" enabled="true" />
+				<add mimeType="application/xhtml+xml" enabled="true" />
+				<add mimeType="application/rss+xml" enabled="true" />
+				<add mimeType="application/javascript" enabled="true" />
+				<add mimeType="text/javascript" enabled="true" />
+				<add mimeType="application/x-javascript" enabled="true" />
+				<add mimeType="image/svg+xml" enabled="true" />
+				<add mimeType="*/*" enabled="false" />
+			</dynamicTypes>
+		</httpCompression>
+
+XML;
+		}
+
+
+		$webConfig .= <<< XML
+		<rewrite>
+			<rules>
+				<clear />
+
+XML;
+
+		if (!empty($config->hoggeragents) && ($config->nohoggers == 1))
+		{
+			$conditions   = '';
+			$patternCache = [];
+
+			foreach ($config->hoggeragents as $agent)
+			{
+				$patternCache[] = $agent;
+
+				if ((is_array($agent) || $agent instanceof \Countable ? count($agent) : 0) < 10)
+				{
+					continue;
+				}
+
+				$newPattern   = implode('|', $patternCache);
+				$conditions   .= <<< XML
+<add input="{HTTP_USER_AGENT}" pattern="$newPattern" />
+
+XML;
+				$patternCache = [];
+			}
+
+			if (count($patternCache))
+			{
+				$newPattern = implode('|', $patternCache);
+				$conditions .= <<< XML
+						<add input="{HTTP_USER_AGENT}" pattern="$newPattern" />
+
+XML;
+			}
+
+			$webConfig .= <<< XML
+				<rule name="Common hacking tools and bandwidth hoggers block" stopProcessing="true">
+					<match url=".*" />
+					<conditions logicalGrouping="MatchAny" trackAllCaptures="false">
+$conditions
+					</conditions>
+					<action type="CustomResponse" statusCode="403" statusReason="Forbidden: Access is denied." statusDescription="You do not have permission to view this directory or page using the credentials that you supplied." />
+				</rule>
+
+XML;
+		}
+
+		if ($config->autoroot)
+		{
+			$webConfig .= <<<XML
+				<rule name="Redirect index.php to /" stopProcessing="true">
+					<match url="^index\.php$" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAll">
+						<add input="{THE_REQUEST}" pattern="^POST" ignoreCase="false" negate="true" />
+						<add input="{THE_REQUEST}" pattern="^[A-Z]{3,9}\ /index\.php\ HTTP/" ignoreCase="false" />
+						<add input="{HTTPS}>s" pattern="^(1>(s)|0>s)$" ignoreCase="false" />
+					</conditions>
+					<action type="Redirect" url="http{C:2}://{HTTP_HOST}:{SERVER_PORT }/" redirectType="Permanent" />
+				</rule>
+
+XML;
+		}
+
+		switch ($config->wwwredir)
+		{
+			case 1:
+				// If I have a rewriteBase condition, I have to append it here
+				$subfolder = trim($config->rewritebase, '/') ? trim($config->rewritebase, '/') . '/' : '';
+
+				// non-www to www
+				$webConfig .= <<<END
+				<rule name="Redirect non-www to www" stopProcessing="true">
+					<match url="^(.*)$" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAll">
+						<add input="{HTTP_HOST}" pattern="^www\." negate="true" />
+					</conditions>
+					<action type="Redirect" url="http://www.{HTTP_HOST}/$subfolder{R:1}" redirectType="Found" />
+				</rule>
+
+END;
+				break;
+
+			case 2:
+				// www to non-www
+				$webConfig .= <<<END
+				<rule name="Redirect www to non-www" stopProcessing="true">
+					<match url="^(.*)$" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAll">
+						<add input="{HTTP_HOST}" pattern="^www\.(.+)$" />
+					</conditions>
+					<action type="Redirect" url="http://{C:1}/{R:1}" redirectType="Found" />
+				</rule>
+
+END;
+				break;
+		}
+
+		if (!empty($config->olddomain))
+		{
+			$domains   = trim($config->olddomain);
+			$domains   = explode(',', $domains);
+			$newdomain = $config->httphost;
+
+			foreach ($domains as $olddomain)
+			{
+				$olddomain         = trim($olddomain);
+				$originalOldDomain = $olddomain;
+
+				if (empty($olddomain))
+				{
+					continue;
+				}
+
+				$olddomain = $this->escape_string_for_regex($olddomain);
+
+				$webConfig .= <<<END
+				<rule name="Redirect old to new domain ($originalOldDomain)" stopProcessing="true">
+					<match url="(.*)" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAll">
+						<add input="{HTTP_HOST}" pattern="^$olddomain" />
+					</conditions>
+					<action type="Redirect" url="http://$newdomain/{R:1}" redirectType="Found" />
+				</rule>
+
+END;
+			}
+		}
+
+		if (!empty($config->httpsurls))
+		{
+			$webConfig .= "<!-- Force HTTPS for certain pages -->\n";
+			foreach ($config->httpsurls as $url)
+			{
+				$urlesc    = '^' . $this->escape_string_for_regex($url) . '$';
+				$webConfig .= <<<END
+				<rule name="Force HTTPS for $url" stopProcessing="true">
+					<match url="^$urlesc$" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAny">
+						<add input="{HTTPS}" pattern="0" />
+					</conditions>
+					<action type="Redirect" url="https://{$config->httpshost}/$url" redirectType="Found" />
+				</rule>
+
+END;
+			}
+		}
+
+		$webConfig .= <<<END
+				<rule name="Block out some common exploits">
+					<match url=".*" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAny" trackAllCaptures="false">
+						<add input="{QUERY_STRING}" pattern="proc/self/environ" ignoreCase="false" />
+						<add input="{QUERY_STRING}" pattern="mosConfig_[a-zA-Z_]{1,21}(=|\%3D)" ignoreCase="false" />
+						<add input="{QUERY_STRING}" pattern="base64_(en|de)code\(.*\)" ignoreCase="false" />
+						<add input="{QUERY_STRING}" pattern="(&lt;|%3C).*script.*(>|%3E)" />
+						<add input="{QUERY_STRING}" pattern="GLOBALS(=|\[|\%[0-9A-Z]{0,2})" ignoreCase="false" />
+						<add input="{QUERY_STRING}" pattern="_REQUEST(=|\[|\%[0-9A-Z]{0,2})" ignoreCase="false" />
+					</conditions>
+					<action type="CustomResponse" url="index.php" statusCode="403" statusReason="Forbidden" statusDescription="Forbidden" />
+				</rule>
+
+END;
+
+		if ($config->fileinj == 1)
+		{
+			$webConfig .= <<<END
+				<rule name="File injection protection" stopProcessing="true">
+					<match url=".*" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAny" trackAllCaptures="false">
+						<add input="{QUERY_STRING}" pattern="[a-zA-Z0-9_]=http://" ignoreCase="false" />
+						<add input="{QUERY_STRING}" pattern="[a-zA-Z0-9_]=(\.\.//?)+" ignoreCase="false" />
+						<add input="{QUERY_STRING}" pattern="[a-zA-Z0-9_]=/([a-z0-9_.]//?)+" />
+					</conditions>
+					<action type="CustomResponse" statusCode="403" statusReason="Forbidden" statusDescription="Forbidden" />
+				</rule>
+
+END;
+		}
+
+		$webConfig .= "                <!-- Advanced server protection rules exceptions -->\n";
+
+		if (!empty($config->exceptionfiles))
+		{
+			$ruleCounter = 0;
+
+			foreach ($config->exceptionfiles as $file)
+			{
+				$ruleCounter++;
+				$file      = '^' . $this->escape_string_for_regex($file) . '$';
+				$webConfig .= <<<END
+				<rule name="Advanced server protection rules exception #$ruleCounter" stopProcessing="true">
+					<match url="$file" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
+					<action type="None" />
+				</rule>
+
+END;
+			}
+		}
+
+		if (!empty($config->exceptiondirs))
+		{
+			$ruleCounter = 0;
+
+			foreach ($config->exceptiondirs as $dir)
+			{
+				$ruleCounter++;
+				$dir       = trim($dir, '/');
+				$dir       = $this->escape_string_for_regex($dir);
+				$webConfig .= <<<END
+				<rule name="Allow access to folders except .php files #$ruleCounter" stopProcessing="true">
+					<match url="^$dir/" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAll" trackAllCaptures="false">
+						<add input="{URL}" pattern="(\.php)$" ignoreCase="false" negate="true" />
+						<add input="{REQUEST_FILENAME}" matchType="IsFile" ignoreCase="false" />
+					</conditions>
+					<action type="None" />
+				</rule>
+
+END;
+			}
+		}
+
+		if (!empty($config->fullaccessdirs))
+		{
+			$ruleCounter = 0;
+
+			foreach ($config->fullaccessdirs as $dir)
+			{
+				$ruleCounter++;
+				$dir       = trim($dir, '/');
+				$dir       = $this->escape_string_for_regex($dir);
+				$webConfig .= <<<END
+				<rule name="Allow access to folders, including .php files #$ruleCounter" stopProcessing="true">
+					<match url="^$dir/" ignoreCase="false" />
+					<action type="None" />
+				</rule>
+
+END;
+			}
+		}
+
+		if ($config->phpeaster == 1)
+		{
+			$webConfig .= <<<END
+				<rule name="PHP Easter Egg protection">
+					<match url=".*" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAll" trackAllCaptures="false">
+						<add input="{QUERY_STRING}" pattern="\=PHP[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" />
+					</conditions>
+					<action type="CustomResponse" statusCode="403" statusReason="Forbidden" statusDescription="Forbidden" />
+				</rule>
+
+END;
+		}
+
+		if ($config->backendprot == 1)
+		{
+			$bedirs    = implode('|', $config->bepexdirs);
+			$betypes   = implode('|', $config->bepextypes);
+			$webConfig .= <<<END
+				<rule name="Back-end protection - allow administrator login" stopProcessing="true">
+					<match url="^administrator/?$" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
+					<action type="None" />
+				</rule>
+				<rule name="Back-end protection - allow administrator login, alternate" stopProcessing="true">
+					<match url="^administrator/index\.(php|html?)$" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
+					<action type="None" />
+				</rule>
+				<rule name="Back-end protection - allow access to static media files" stopProcessing="true">
+					<match url="^administrator/($bedirs)/.*\.($betypes)$" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
+					<action type="None" />
+				</rule>
+				<rule name="Back-end protection - Catch all">
+					<match url="^administrator/" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
+					<action type="CustomResponse" statusCode="403" statusReason="Forbidden" statusDescription="Forbidden" />
+				</rule>
+
+END;
+		}
+
+		if ($config->frontendprot == 1)
+		{
+			$fedirs    = implode('|', $config->fepexdirs);
+			$fetypes   = implode('|', $config->fepextypes);
+			$webConfig .= <<<END
+				<rule name="Front-end protection - allow access to static media files" stopProcessing="true">
+					<match url="^($fedirs)/.*\.($fetypes)$" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
+					<action type="None" />
+				</rule>
+				<rule name="Front-end protection - Do not block includes/js" stopProcessing="true">
+					<match url="^includes/js/" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
+					<action type="None" />
+				</rule>
+				<rule name="Front-end protection - Block access to certain folders">
+					<match url="^($fedirs)/" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
+					<action type="CustomResponse" statusCode="403" statusReason="Forbidden" statusDescription="Forbidden" />
+				</rule>
+				<rule name="Front-end protection - Block access to certain folders, part 2">
+					<match url="^(cache|includes|language|logs|log|tmp)/" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
+					<action type="CustomResponse" statusCode="403" statusReason="Forbidden" statusDescription="Forbidden" />
+				</rule>
+				<rule name="Front-end protection - Forbid access to leftover Joomla! files">
+					<match url="^(configuration\.php|CONTRIBUTING\.md|htaccess\.txt|joomla\.xml|LICENSE\.txt|phpunit\.xml|README\.txt|web\.config\.txt)" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
+					<action type="CustomResponse" statusCode="403" statusReason="Forbidden" statusDescription="Forbidden" />
+				</rule>
+				<rule name="Front-end protection - Block access to all PHP files except index.php">
+					<match url="(.*\.php)$" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAll" trackAllCaptures="false">
+						<add input="{URL}" pattern="(\.php)$" ignoreCase="false" />
+						<add input="{URL}" pattern="(/index?\.php)$" ignoreCase="false" negate="true" />
+						<add input="{REQUEST_FILENAME}" matchType="IsFile" ignoreCase="false" />
+					</conditions>
+					<action type="CustomResponse" statusCode="403" statusReason="Forbidden" statusDescription="Forbidden" />
+				</rule>
+
+END;
+		}
+
+		if ($config->leftovers == 1)
+		{
+			$webConfig .= <<<END
+				<rule name="Front-end protection - Block access to common server configuration files">
+					<match url="^(htaccess\.txt|configuration\.php-dist|php\.ini|.user\.ini|web\.config|web\.config\.txt)$" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
+					<action type="CustomResponse" statusCode="403" statusReason="Forbidden" statusDescription="Forbidden" />
+				</rule>
+
+END;
+		}
+
+		$webConfig .= <<< XML
+				<rule name="Joomla! Common Exploits Prevention" stopProcessing="true">
+					<match url="^(.*)$" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAny" trackAllCaptures="false">
+						<add input="{QUERY_STRING}" pattern="base64_encode[^(]*\([^)]*\)" ignoreCase="false" />
+						<add input="{QUERY_STRING}" pattern="(>|%3C)([^s]*s)+cript.*(&lt;|%3E)" />
+						<add input="{QUERY_STRING}" pattern="GLOBALS(=|\[|\%[0-9A-Z]{0,2})" ignoreCase="false" />
+						<add input="{QUERY_STRING}" pattern="_REQUEST(=|\[|\%[0-9A-Z]{0,2})" ignoreCase="false" />
+					</conditions>
+					<action type="CustomResponse" url="index.php" statusCode="403" statusReason="Forbidden" statusDescription="Forbidden" />
+				</rule>
+
+XML;
+
+		if ($isJoomla4)
+		{
+			$webConfig .= <<< XML
+				<rule name="Joomla! API Application SEF URLs">
+                   <match url="^api/(.*)" ignoreCase="false" />
+                   <conditions logicalGrouping="MatchAll">
+                     <add input="{URL}" pattern="^/api/index.php" ignoreCase="true" negate="true" />
+                     <add input="{REQUEST_FILENAME}" matchType="IsFile" ignoreCase="false" negate="true" />
+                     <add input="{REQUEST_FILENAME}" matchType="IsDirectory" ignoreCase="false" negate="true" />
+                   </conditions>
+                   <action type="Rewrite" url="api/index.php" />
+               </rule>
+
+XML;
+		}
+
+		$webConfig .= <<< XML
+				<rule name="Joomla! SEF Rule 2">
+					<match url="(.*)" ignoreCase="false" />
+					<conditions logicalGrouping="MatchAll" trackAllCaptures="false">
+						<add input="{URL}" pattern="^/index.php" ignoreCase="true" negate="true" />
+						<add input="{REQUEST_FILENAME}" matchType="IsFile" ignoreCase="false" negate="true" />
+						<add input="{REQUEST_FILENAME}" matchType="IsDirectory" ignoreCase="false" negate="true" />
+					</conditions>
+					<action type="Rewrite" url="index.php" />
+				</rule>
+
+			</rules>
+
+XML;
+
+		if ($config->noserversignature == 1)
+		{
+			$webConfig .= <<< XML
+		<!-- Remove IIS version signature -->
+		<outboundRules>
+		  <rule name="Remove RESPONSE_Server">
+			<match serverVariable="RESPONSE_Server" pattern=".+" />
+			<action type="Rewrite" value="MYOB" />
+		  </rule>
+		</outboundRules>
+
+XML;
+		}
+
+		$webConfig .= <<< XML
+		</rewrite>
+		<httpProtocol>
+			<customHeaders>
+
+XML;
+
+		if ($config->clickjacking == 1)
+		{
+			$webConfig .= <<< ENDCONF
+				<!-- Protect against clickjacking / Forbid displaying in FRAME -->
+				<add name="X-Frame-Options" value="SAMEORIGIN" />
+
+ENDCONF;
+		}
+
+		if ($config->reducemimetyperisks == 1)
+		{
+			$webConfig .= <<< XML
+				<!-- Reduce MIME type security risks -->
+				<add name="X-Content-Type-Options" value="nosniff" />
+
+XML;
+		}
+
+		if ($config->reflectedxss == 1)
+		{
+			$webConfig .= <<< XML
+				<!-- Reflected XSS prevention -->
+				<add name="X-XSS-Protection" value="1; mode=block" />
+
+XML;
+		}
+
+		if ($config->noserversignature == 1)
+		{
+			$webConfig .= <<< XML
+				<!-- Remove IIS and PHP version signature -->
+				<remove name="X-Powered-By" />
+				<add name="X-Powered-By" value="MYOB" />
+				<remove name="X-Content-Powered-By" />
+				<add name="X-Content-Powered-By" value="MYOB" />
+
+XML;
+
+		}
+
+		if ($config->notransform == 1)
+		{
+			$webConfig .= <<< XML
+				<!-- Prevent content transformation -->
+				<add name="Cache-Control" value="no-transform" />
+
+XML;
+		}
+
+		if ($config->hstsheader == 1)
+		{
+			$webConfig .= <<<XML
+				<!-- HSTS Header - See http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security -->
+				<add name="Strict-Transport-Security" value="max-age=31536000" />
+
+XML;
+		}
+		elseif ($config->hstsheader == 2)
+		{
+			$webConfig .= <<<XML
+				<!-- HSTS Header - See http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security -->
+				<add name="Strict-Transport-Security" value="max-age=31536000; includeSubDomains; preload" />
+
+XML;
+		}
+
+		if ($config->cors == 1)
+		{
+			$webConfig .= <<<XML
+				<!-- Explicitly enable Cross-Origin Resource Sharing (CORS) - See http://enable-cors.org/ -->
+				<add name="Access-Control-Allow-Origin" value="*" />
+				<add name="Timing-Allow-Origin" value="*" />
+
+XML;
+		}
+		elseif ($config->cors == -1)
+		{
+			$webConfig .= <<<XML
+				<!-- Explicitly disable Cross-Origin Resource Sharing (CORS) - See http://enable-cors.org/ -->
+				<add name="Cross-Origin-Resource-Policy" value="same-origin" />
+
+XML;
+		}
+
+		if ($config->referrerpolicy !== '-1')
+		{
+			$webConfig .= <<<XML
+				<!-- Referrer-policy -->
+				<add name="Referrer-Policy" value="{$config->referrerpolicy}" />
+
+XML;
+		}
+
+		$webConfig .= <<< XML
+			</customHeaders>
+		</httpProtocol>
+
+XML;
+
+		if ($config->notracetrack == 1)
+		{
+			$webConfig .= <<<XML
+		<!-- Disable HTTP methods TRACE and TRACK (protect against XST) -->
+		<security>
+			<requestFiltering>
+				<verbs>
+					<add verb="TRACE" allowed="false" />
+					<add verb="TRACK" allowed="false" />
+				</verbs>
+			</requestFiltering>
+		</security>
+
+XML;
+		}
+
+		$webConfig .= <<< XML
+	</system.webServer>
+</configuration>
+
+XML;
+
+		return $webConfig;
+	}
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="b0_load_repair"  addfieldpath="/libraries/mint/forms/fields" label="Загрузка прайс-листа Ремонт" description="Simply click import button">
+        <field name="files" type="filelist" directory="/uploads" label="Выберите CSV файл" description="Описание поля" />
+        <field name="section_id" type="meresourcessection" label="Раздел" />
+        <field name="type_id" type="mertype" default="" label="Тип контента" />
+        <field name="category" type="list" label="Категория">
+            <option value="engine">Двигатель</option>
+            <option value="steering">Рулевое</option>
+            <option value="run">Ходовая</option>
+            <option value="transmission">Трансмиссия</option>
+            <option value="braking">Тормоза</option>
+            <option value="body">Кузов</option>
+            <option value="salon">Салон</option>
+            <option value="electric">Электрика</option>
+            <option value="tires">Шиномонтаж</option>
+            <option value="reglament">Регламент</option>
+        </field>
+    </fieldset>
+</form>

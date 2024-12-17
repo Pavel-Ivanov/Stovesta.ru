@@ -1,0 +1,14 @@
+div > p.text-right{ 
+  text-align: right; 
+}
+#email{
+  width:30%;
+}
+#message{
+  width:80%;
+}
+#ContactusTable td, #ContactusTable th{
+  text-align:left;
+  min-width:130px;  
+  height:30px;
+} 

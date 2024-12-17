@@ -1,0 +1,50 @@
+<?php
+ defined('_JEXEC') or die('Restricted access');
+
+if(!function_exists('mod_getChildsDrop')) { function mod_getChildsDrop($category, $params, $k = 1) {
+	$category->records = modCobaltCategoriesHelper::getCatRecords($category->id, $params);?>
+	<?php if(count($category->children) || count($category->records)) :?>
+		<ul class="uk-list">
+			<?php foreach($category->children as $i => $cat ) :
+				if (!$params->get('tmpl_params.subcat_empty', 1) && !$cat->num_current && !$cat->num_all) continue;  ?>
+                <li>
+                        <a href="<?= JRoute::_($cat->link)?>">
+                            <?= $cat->title;?>
+                            <?php if($params->get('tmpl_params.subcat_nums', 0) && $cat->params->get('submission')):?>
+                                <span class="small">(<?php echo (int)$cat->records_num; ?>)</span>
+                            <?php endif;?>
+                        </a>
+
+                        <?php if($cat->childs_num):?>
+                            <?php mod_getChildsDrop($cat, $params, $k + 1);?>
+                        <?php endif;?>
+                </li>
+			<?php endforeach;?>
+		</ul>
+	<?php endif; ?>
+<?php }} ?>
+
+
+<div class="uk-accordion" data-uk-accordion="{showfirst:false}">
+    <?php foreach ($categories as $cat) :
+        if (!$params->get('tmpl_params.cat_empty', 1) && !$cat->num_current && !$cat->num_all) continue;  ?>
+
+        <h3 class="uk-accordion-title">
+            <?= $cat->title;?>
+            <?php if($params->get('tmpl_params.cat_nums', 0) && $cat->params->get('submission')):?>
+                <span class="small">(<?php echo (int)$cat->records_num; ?>)</span>
+            <?php endif;?>
+            <i class="uk-icon-angle-down uk-float-right"></i>
+        </h3>
+
+        <?php if($cat->childs_num):?>
+            <div class="uk-accordion-content">
+                <?php mod_getChildsDrop($cat, $params);?>
+            </div>
+        <?php endif;?>
+    <?php endforeach;?>
+</div>
+<div class="clearfix"> </div>
+
+
+

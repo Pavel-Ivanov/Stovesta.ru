@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="b0_resave_records" addfieldpath="/libraries/mint/forms/fields" label="Remove value" description="Simply click button">
+        <field name="section_id" type="meresourcessection" default="" alias="1" label="Section" required="true"/>
+        <field name="type_id" type="mertype" default="" label="Content type" required="true" />
+<!--        <field name="field_id" type="meresourcesfields" filters="'checkbox', 'select'" key="id" default="" label="Field for remove value" required="true" />-->
+<!--        <field name="value" type="text" default="" label="Value for remove" required="true" />-->
+        <field name="search_limit_start" type="text" default="0" label="Limit start" />
+        <field name="search_limit_number" type="text" default="0" label="Limit number" />
+    </fieldset>
+</form>

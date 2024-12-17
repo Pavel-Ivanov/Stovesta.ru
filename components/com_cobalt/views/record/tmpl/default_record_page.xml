@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<name>Page</name>
+	<author>Pavel Ivanov</author>
+	<description>Template of Page</description>
+
+	<fields name="tmpl_core">
+		<fieldset name="links" label="Ссылки">
+			<field name="link_canonical" type="text" required="true" default="" label="Каноническая ссылка" />
+		</fieldset>
+	</fields>
+</form>

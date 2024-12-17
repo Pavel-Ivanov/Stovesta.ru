@@ -1,0 +1,387 @@
+.uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6 {
+    margin: 0 0 10px 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+    color: #333333;
+    text-transform: none;
+}
+* + .uk-h1,
+* + .uk-h2,
+* + .uk-h3,
+* + .uk-h4,
+* + .uk-h5,
+* + .uk-h6 {
+    margin-top: 15px;
+}
+
+.tm-block-content-top {
+    padding-bottom: 10px!important;
+}
+
+.b0-header {
+    font-family: "Open Sans Condensed", sans-serif;
+    color: #444;
+    font-weight: 400;
+    /*border-bottom: 1px solid #ccc;*/
+    /*padding-bottom: 5px;*/
+    font-size: 20px;
+}
+.b0-header-1 {
+    font-family: "Open Sans Condensed", sans-serif;
+    color: #444;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+
+.lgs-header-ph p:first-child{
+    font-family: "Open Sans Condensed", sans-serif;
+    color: #444;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    font-size: 18px;
+    /*line-height: 25px;*/
+    /*text-align: center;*/
+}
+.lgs-header-ph p:nth-child(2){
+    /*background: url("/images/elements/sprite.png") no-repeat -10px -11px;*/
+    color: #000;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+.lgs-header-ph p:last-child{
+    /*background: url("/images/elements/sprite.png") no-repeat -10px -29px;*/
+    color: #000;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    margin-top: 0px;
+}
+.lgs-header-ph p span {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    color: #757575;
+    font-size: 14px;
+}
+
+.uk-table td, .uk-table th {
+    /*border-bottom: 1px solid #e5e5e5;*/
+    border-bottom: 1px solid #999;
+}
+
+.ls-table-condensed th {
+    padding: 4px 2px;
+}
+
+.ls-table-condensed td {
+    padding: 4px 2px;
+    /*background: #E5E5E5;*/
+    /*border-right: 1px solid #E5E5E5;*/
+}
+/*
+.ls-table-condensed td:before {
+    !*border-left: 1px solid #aaa;*!
+    content: "|";
+    display: inline-block;
+    !*height: 25px;*!
+    vertical-align: middle;
+}
+*/
+.ls-table-condensed a {
+    text-decoration: none;
+}
+
+/*             */
+
+.ls-text-large {
+    font-family: "Open Sans Condensed", sans-serif;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 400;
+    color: #7c7c7c;
+    text-transform: uppercase;
+}
+
+.lrs-hr-main {
+    border-top: 1px solid #252544;
+}
+
+.ls-text-bold {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+    color: #333333;
+}
+
+.ls-sub-title {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 300;
+}
+
+.ls-td-condensed {
+    padding: 5px 2px 5px 2px !important;
+    /*border-right: 1px solid #e5e5e5;*/
+}
+
+.uk-tab > li > a {
+    font-family: "Open Sans Condensed", sans-serif;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    background: #f4f4f4;
+}
+
+.lrs-hr {
+    border-top: 1px dotted rgba(8, 8, 8, 0.5);
+    margin-top: 0;
+}
+
+.ls-price-first {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: 400;
+}
+
+.ls-price-special {
+font-family: "Roboto Condensed", sans-serif;
+font-size: 20px;
+line-height: 20px;
+font-weight: 400;
+}
+
+.lrs-price-second {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+}
+
+.ls-price-second {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+}
+
+.lrs-title-related {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+}
+
+.lrs-article-title-related {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+    text-transform: none;
+}
+.lrs-article-title-related a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.lrs-price-related {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+}
+
+/*
+select#filtersk08005f0bec31df8ff08571ea0c969280value {
+    height: 40px;
+    border-color: #ec534c !important;
+}
+*/
+
+.ls-helpfull-image {
+    float: right;
+    margin: 5px 0 10px 20px ;
+}
+
+.error404-text {
+    text-align: center;
+}
+.error404-title {
+    font-size: 122px; font-weight: 700; color: #cb5656; text-shadow: 0 7px 0 #e0e0e0;
+}
+.error404-title2 {
+    font-size: 24px; color: #cb5656; text-shadow: 0 2px 0 #e0e0e0;
+}
+.error404-text p {
+    font-size: 24px; color: #999;
+}
+
+/* Альфа - индекс */
+.alpha-index {
+    text-align: center;
+}
+
+.alpha-index .label-warning {
+    cursor: pointer;
+}
+
+.alpha-index .alpha-set {
+    margin: 5px 0;
+}
+
+/*Страница доставки*/
+.stages {
+    margin: 15px 0;
+}
+.stages p.s {
+    font-size: 22px;
+    text-align: center;
+    margin-top: 22px;
+}
+.stages_box {
+    display: block;
+    float: left;
+    width: 16%;
+    text-align: center;
+    background: url("/images/articles/delivery-free/arrow.png") no-repeat -10px 38px;
+    padding-left: 38px;
+}
+.stages_box:first-child {
+    background: inherit;
+    padding: 0;
+    width: 18%;
+}
+.stages_box span {
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+}
+
+/* Иконки техобслуживания */
+.b0-oil {
+    background: url('/images/elements/maintenance/oil.png') no-repeat center;
+    min-height: 32px;
+}
+.b0-oil-grm {
+    background: url('/images/elements/maintenance/oil-grm.png') no-repeat center;
+    min-height: 32px;
+}
+.b0-oil-ign {
+    background: url('/images/elements/maintenance/oil-ign.png') no-repeat center;
+    min-height: 32px;
+}
+.b0-oil-ign-grm {
+    background: url('/images/elements/maintenance/oil-ign-grm.png') no-repeat center;
+    min-height: 32px;
+}
+.b0-oil-ign-grm-liq {
+    background: url('/images/elements/maintenance/oil-ign-grm-liq.png') no-repeat center;
+    min-height: 32px;
+}
+.b0-oil-ign-liq {
+    background: url('/images/elements/maintenance/oil-ign-liq.png') no-repeat center;
+    min-height: 32px;
+}
+.b0-oil-liq {
+    background: url('/images/elements/maintenance/oil-liq.png') no-repeat center;
+    min-height: 32px;
+}
+.b0-link-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+/* Календарь */
+.calendar-discount {
+    color: #f3672a;
+}
+.calendar-holiday {
+    color: #12c217;
+}
+.calendar-short {
+    color: #2d308f;
+}
+.calendar-stock {
+    color: #006eee;
+}
+
+/* Статус фильтров  */
+.b0-filters-status {
+    background: #ffffff;
+    color: #666666;
+    text-transform: none;
+    border-color: red;
+}
+/* Заголовки */
+.b0-title-related {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+}
+.b0-title-related a {
+    color: inherit;
+    text-decoration: none;
+}
+/* Цены */
+.b0-price {
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 400;
+}
+.b0-price-general {
+    font-size: 18px;
+    line-height: 18px;
+}
+.b0-price-first {
+    font-size: 20px;
+    line-height: 20px;
+}
+.b0-price-second {
+    font-size: 18px;
+    line-height: 18px;
+}
+.b0-price-special {
+    font-size: 20px;
+    line-height: 20px;
+}
+.b0-price-delivery {
+    font-size: 20px;
+    line-height: 20px;
+}
+.b0-price-related {
+    font-size: 18px;
+    line-height: 18px;
+}
+
+.anchor a {
+    color: #ec6a32;
+    text-decoration:none;
+}
+.anchor a:hover {
+    color: #fff;
+    background: #e36f57;
+    outline: none;
+}
+
+.anchor-tags a {
+    color: #666;
+    text-decoration:none;
+}
+.anchor-tags a:hover {
+    color: #fc5808;
+    background-color: #eee;
+    outline: none;
+}
+/* Изображения */
+.b0-image-right {
+    float: right;
+    margin: 5px 0 10px 20px ;
+}
+
+.uk-description-list-horizontal>dt{
+    width: 300px;
+}

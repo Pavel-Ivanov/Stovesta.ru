@@ -1,0 +1,5 @@
+{
+	"label": "B0 установка пустого MetaDescription",
+	"description": "Очищаем MetaDescription, если оно равно H1",
+	"height": "500"
+}

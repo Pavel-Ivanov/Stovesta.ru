@@ -1,0 +1,5 @@
+{
+	"label": "B0 loader repair",
+	"description": "Загрузка раздела Ремонт из CSV файла.",
+	"height": "500"
+}

@@ -1,0 +1,111 @@
+// Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+//
+// Component: Subnav
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@subnav-color:                                  @global-color;
+@subnav-hover-color:                            @global-link-color;
+@subnav-active-color:                           @global-link-color;
+
+@subnav-line-border:                            @global-border;
+
+@subnav-pill-background:                        rgba(0,0,0,0);
+@subnav-pill-hover-background:                  @global-primary-background;
+@subnav-pill-hover-color:                       @global-contrast-color;
+@subnav-pill-active-background:                 @subnav-pill-hover-background;
+@subnav-pill-active-color:                      @global-contrast-color;
+
+@subnav-disabled-color:                         @global-muted-color;
+
+//
+// New
+//
+
+@subnav-font-size:                              (@global-font-size * 0.86); // 13px
+@subnav-text-transform:                         uppercase;
+
+@subnav-pill-padding-horizontal:                12px;
+@subnav-pill-border-width:                      @global-border-width;
+@subnav-pill-border:                            @global-primary-background;
+@subnav-pill-border-radius:                     @global-border-radius;
+@subnav-pill-line-height:                       @global-height;
+@subnav-pill-color:                             @global-primary-background;
+
+@subnav-pill-active-shadow:                     desaturate(darken(@global-primary-background, 15%), 15%);
+
+
+// Component
+// ========================================================================
+
+//
+// Items
+//
+
+.hook-subnav() {
+    font-size: @subnav-font-size;
+    text-transform: @subnav-text-transform;
+}
+
+// Hover
+.hook-subnav-hover() {}
+
+// Active
+.hook-subnav-active() {}
+
+
+// Modifier: `uk-subnav-line'
+// ========================================================================
+
+.hook-subnav-line-divider() {}
+
+
+// Modifier: `uk-subnav-pill'
+// ========================================================================
+
+.hook-subnav-pill() {
+    padding: 0 @subnav-pill-padding-horizontal;
+    border: @subnav-pill-border-width solid @subnav-pill-border;
+    border-radius: @subnav-pill-border-radius;
+    line-height: @subnav-pill-line-height;
+    color: @subnav-pill-color;
+    -webkit-transition: @global-transition;
+    transition: @global-transition;
+}
+
+// Hover
+.hook-subnav-pill-hover() {}
+
+// Active
+.hook-subnav-pill-active() {}
+
+
+// Disabled state
+// ========================================================================
+
+.hook-subnav-disabled() { border: 0; }
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-subnav-misc() {
+
+    .uk-subnav-pill {
+
+        // Onclick
+        > li > a:active {
+            border-color: darken(@subnav-pill-border, 10%);
+            background: darken(@subnav-pill-active-background, 8%);
+            box-shadow: inset 0 0 5px @button-primary-active-shadow;
+            color: fade(@subnav-pill-active-color, 80%);
+        }
+
+    }
+
+}

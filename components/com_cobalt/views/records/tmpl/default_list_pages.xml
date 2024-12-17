@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<name>Pages List</name>
+	<description>Template list pages</description>
+
+	<fields name="tmpl_params">
+
+	</fields>
+	<fields name="tmpl_core">
+		<fieldset name="elements2" label="CLISTELEMENTS">
+			<field name="item_pagination" type="radio" class="btn-group" default="1" label="CPAGINATION">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="item_limit_box" type="radio" class="btn-group" default="1" label="X_PAGLIMITBOX">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="item_limit_default" type="text" size="3" default="20" label="X_DEFAULTPAGLIMIT" />
+		</fieldset>
+	</fields>
+</form>

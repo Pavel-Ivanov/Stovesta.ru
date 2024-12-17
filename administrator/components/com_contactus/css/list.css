@@ -1,0 +1,16 @@
+tr.read{
+	background-color:rgba(243,243,243,.85);
+}
+tr:hover td{
+	background:#f0f8ff;
+}
+#ContactusTable td, #ContactusTable th{
+	min-width:60px;
+	text-align:center;	
+}
+#ContactusTable td.contactus_td_long{
+	min-width:130px;
+}		
+#ContactusTable tr,#ContactusTable th{
+	height: 30px;
+}

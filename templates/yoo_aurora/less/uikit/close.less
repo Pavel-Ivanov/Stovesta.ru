@@ -1,0 +1,46 @@
+// Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+//
+// Component: Close
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@close-alt-background:                          @global-background;
+
+
+//
+// New
+//
+
+@close-alt-border-width:                        @global-border-width;
+@close-alt-border:                              @global-border;
+@close-alt-hover-border:                        darken(@global-light-background, 10%);
+
+
+// Component
+// ========================================================================
+
+.hook-close() {}
+
+
+// Modifier: `uk-close-alt`
+// ========================================================================
+
+.hook-close-alt() {
+
+    border: @close-alt-border-width solid @close-alt-border;
+    color: @global-color;
+
+    &:hover { border-color: @close-alt-hover-border; }
+
+}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-close-misc() {}

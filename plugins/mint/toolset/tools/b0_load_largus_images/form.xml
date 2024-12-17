@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="b0_load_largus_images"  addfieldpath="/libraries/mint/forms/fields" label="Загрузка прайс-листа Ремонт" description="Simply click import button">
+        <field name="files" type="filelist" directory="/uploads" label="Выберите CSV файл" description="Описание поля" />
+        <field name="section_id" type="meresourcessection" label="Раздел" />
+        <field name="type_id" type="mertype" default="" label="Тип контента" />
+    </fieldset>
+</form>

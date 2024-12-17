@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<name>b0_default</name>
+	<author>Pavel Ivanov</author>
+	<version>1.0.0</version>
+	<description>Template Sparepart full page</description>
+
+	<fields name="tmpl_params">
+		<fieldset name="general" label="Общие">
+			<field name="item_time_format" type="list" default="l, d F Y" label="Формат даты" >
+				<option value="l, d F Y">Tuesday, 30 December 2007</option>
+				<option value="d F Y">30 December 2007</option>
+				<option value="d.m.Y">30.12.2007</option>
+			</field>
+		</fieldset>
+	</fields>
+
+	<fields name="tmpl_core">
+<!--
+		<fieldset name="analytics" label="Аналитика">
+			<field name="yandex" type="radio" class="btn-group" default="0" label="Yandex" >
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field name="yandex_goal_order" type="text" maxlength="20" default="" label="ID цели Yandex Записаться на ремонт" />
+			<field name="yandex_goal_callback" type="text" maxlength="20" default="" label="ID цели Yandex Заказ обратного звонка" />
+			<field name="google" type="radio" class="btn-group" default="0" label="Google" >
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field name="google_goal_order" type="text" maxlength="20" default="" label="ID цели Google Записаться на ремонт" />
+			<field name="google_goal_callback" type="text" maxlength="20" default="" label="ID цели Google Заказ обратного звонка" />
+		</fieldset>
+-->
+		<fieldset name="phones" label="Телефоны">
+			<field name="phone_1" type="text" maxlength="20" required="true" default="" label="Телефон 1" />
+			<field name="phone_2" type="text" maxlength="20" required="true" default="" label="Телефон 2" />
+		</fieldset>
+		<fieldset name="modules" label="Модули">
+			<field name="module_order" type="text" maxlength="3" required="true" default="" label="Модуль Записаться на сервис" />
+			<field name="module_callback" type="text" maxlength="3" required="true" default="" label="Модуль Заказать обратный звонок" />
+			<field name="module_minibanners" type="text" maxlength="3" required="true" default="" label="Модуль Мини баннеры" />
+		</fieldset>
+		<fieldset name="links" label="Ссылки">
+			<field name="first_visit_url" type="url" required="true" label="Ссылка на акцию Приятное знакомство" />
+			<field name="guarantee_url" type="url" required="true" label="Ссылка на страницу Условия гарантии" />
+			<field name="discounts_url" type="url" required="true" label="Ссылка на страницу Программа лояльности" />
+			<field name="vk_url" type="url" required="true" label="Ссылка на группу ВКонтакте" />
+		</fieldset>
+		<fieldset name="images" label="Картинки">
+			<field name="vk_icon" type="url" required="true" label="Ссылка на иконку ВКонтакте" />
+			<field name="discount_card_icon" type="url" required="true" label="Ссылка на картинку Дисконтной карты" />
+			<field name="default_picture" type="url" required="true" label="Ссылка на картинку по умолчанию" />
+			<field name="default_video" type="url" required="true" label="Ссылка на видео по умолчанию" />
+		</fieldset>
+	</fields>
+</form>

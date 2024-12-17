@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<name>Spareparts for Kit List</name>
+	<description>Template list of Spareparts for Kit</description>
+
+	<fields name="tmpl_params">
+		<!--		-->
+	</fields>
+	<fields name="tmpl_core">
+		<!--		-->
+	</fields>
+</form>

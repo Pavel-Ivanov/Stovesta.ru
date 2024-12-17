@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<name>b0 Kit</name>
+	<author>Pavel Ivanov</author>
+	<version>1.00</version>
+	<description>Template Kit fool view</description>
+
+	<fields name="tmpl_params">
+		<!--		-->
+	</fields>
+
+	<fields name="tmpl_core">
+		<!--		-->
+	</fields>
+</form>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<name>Simple List</name>
+	<author>MintJoomla</author>
+	<creationDate>Febrary 2012</creationDate>
+	<copyright>Copyright (C) 2005 - 2012 MintJoomla. All rights reserved.</copyright>
+	<license>Commercial (http://www.mintjoomla.com/commercial-license)</license>
+	<authorEmail>support@mintjoomla.com</authorEmail>
+	<authorUrl>www.mintjoomla.com</authorUrl>
+	<version>8.28</version>
+	<description>Template list table</description>
+
+	<fields name="tmpl_params">
+
+	</fields>
+	<fields name="tmpl_core">
+		<fieldset name="general2" label="CFORMAT">
+			<field name="item_time_format" type="list" default="d M Y" label="CDATEFORMAT" >
+				<option value="h:i A, l, d F Y">12:00 AM, Tuesday, 30 December 2007</option>
+				<option value="h:i A, l, F d, Y">12:00 AM, Tuesday, December 30, 2007</option>
+				<option value="l, d F Y">Tuesday, 30 December 2007</option>
+				<option value="l, F d, Y">Tuesday, December 30, 2007</option>
+				<option value="d F Y">30 December 2007</option>
+				<option value="F d, Y">December 30, 2007</option>
+				<option value="d M Y">30 Dec 2007</option>
+				<option value="M d, Y">Dec 30, 2007</option>
+			</field>
+	</fieldset>
+
+	<fieldset name="elements2" label="CLISTELEMENTS">
+		<field name="show_title_index" type="radio" class="btn-group" default="0" label="X_SHOWTITLEINDEX">
+			<option value="0">CNO</option>
+			<option value="1">CYES</option>
+		</field>
+		<field name="item_pagination" type="radio" class="btn-group" default="1" label="CPAGINATION">
+			<option value="0">CNO</option>
+			<option value="1">CYES</option>
+		</field>
+		<field name="item_limit_box" type="radio" class="btn-group" default="1" label="X_PAGLIMITBOX">
+			<option value="0">CNO</option>
+			<option value="1">CYES</option>
+		</field>
+		<field name="item_limit_default" type="text" size="3" default="20" label="X_DEFAULTPAGLIMIT" />
+	</fieldset>
+
+	</fields>
+</form>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<name>Works</name>
+	<author>Pavel Ivanov</author>
+	<version>1.00</version>
+	<description>List of works</description>
+
+	<fields name="tmpl_params">
+	</fields>
+	<fields name="tmpl_core">
+		<fieldset name="general2" label="CFORMAT">
+			<field name="item_time_format" type="list" default="d M Y" label="CDATEFORMAT" >
+				<option value="l, d F Y">Вторник, 30 Декабря 2007</option>
+				<option value="d F Y">30 Декабря 2007</option>
+				<option value="d.m.y">30.12.07</option>
+				<option value="m-d-y">30-12-07</option>
+			</field>
+		</fieldset>
+		<fieldset name="modules" label="Модули">
+			<field name="module_entry" type="text" maxlength="3" required="true" default="" label="Модуль Записаться на сервис" />
+		</fieldset>
+		<fieldset name="images" label="Картинки">
+			<field name="default_picture" type="url" required="true" label="Ссылка на картинку по умолчанию" />
+		</fieldset>
+		<fieldset name="elements2" label="CLISTELEMENTS">
+			<field name="item_pagination" type="radio" class="btn-group" default="1" label="CPAGINATION">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="item_limit_box" type="radio" class="btn-group" default="1" label="X_PAGLIMITBOX">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="item_limit_default" type="text" size="3" default="20" label="X_DEFAULTPAGLIMIT" />
+		</fieldset>
+		<fieldset name="elements" label="CRECORDELEM">
+			<field name="item_print" type="radio" class="btn-group" default="1" label="CPRINTICON" >
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+		</fieldset>
+	</fields>
+</form>

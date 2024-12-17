@@ -1,0 +1,5 @@
+{
+	"label": "B0 add a value by double condition",
+	"description": "Adds a field value depending on the value of two any fields.",
+	"height": "500"
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<name>b0_default</name>
+	<author>Pavel Ivanov</author>
+	<version>1.0.0</version>
+	<description>Template News full page</description>
+
+	<fields name="tmpl_core">
+		<fieldset name="general2" label="CFORMAT">
+			<field name="item_time_format" type="list" default="l, d F Y" label="Формат даты" >
+				<option value="l, d F Y">Tuesday, 30 December 2007</option>
+				<option value="d F Y">30 December 2007</option>
+				<option value="d.m.Y">30.12.2007</option>
+			</field>
+			<field name="module_minibanners" type="text" maxlength="3" required="true" default="" label="Модуль Мини баннеры" />
+		</fieldset>
+	</fields>
+</form>

@@ -1,0 +1,18 @@
+<?php
+defined('_JEXEC') or die();
+
+class WikiKeys
+{
+	const KEY_ANNOUNCEMENT = 'kdee5d8494e299dfdaa42602315426002';
+	const KEY_CONTENTS = 'kfc4cee5f7bdc6a05efb2fbfea35686c8';
+	const KEY_BODY = 'ke36289d9b57caec27e95bc7603433428';
+	const KEY_AUTHOR = 'ka38e4a98156b6a0bae01ad00d6374e6f';
+	const KEY_SITE = 'k991820da8a892540c099e3a3dc75a678';
+	const KEY_IMAGE = 'k907c3438cd4a78f6ea9cb9514aa2b88b';
+	const KEY_GALLERY = 'k4374b93371d715b0a375d410ab98a316';
+	const KEY_VIDEO = 'k64d2fb19fe6dc39d3edd4e0baa55e786';
+	const KEY_RELATED_ARTICLES = 'k769038b6abb8c50840ee02ec7597497f';
+	const KEY_RELATED_ACCESSORIES = 'kbd3d85c9cd9a7bdad40d3141438b8153';
+	const KEY_RELATED_SPAREPARTS = 'k29728baf8b8c56f08465f2d7845009ef';
+	const KEY_RELATED_WORKS = 'k56b2bdb24f84def522a7450b31f5a998';
+}

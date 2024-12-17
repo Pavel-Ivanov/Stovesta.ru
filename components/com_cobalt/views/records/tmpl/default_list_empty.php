@@ -1,0 +1,1 @@
+<?phpdefined('_JEXEC') or die('Restricted access');$params = $this->tmpl_params['list'];

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="file" version="1.6" method="upgrade" client="site">
+    <name>admintools - Russian</name>
+    <author>Akeeba Ltd</author>
+    <authorurl>https://www.akeeba.com</authorurl>
+	<copyright>Copyright (C) 2010-2018 Akeeba Ltd. All rights reserved.</copyright>
+	<license>GNU GPL v3 or later</license>
+    <version>20180208.012306</version>
+    <creationDate>08 Feb 2018</creationDate>
+    <description>Russian language files for Admin Tools for Joomla!</description>
+	<fileset><files folder="backend" target="administrator/language/ru-RU"><filename>ru-RU.com_admintools.ini</filename><filename>ru-RU.com_admintools.menu.ini</filename><filename>ru-RU.com_admintools.sys.ini</filename><filename>ru-RU.plg_system_atoolsjupdatecheck.ini</filename><filename>ru-RU.plg_system_atoolsjupdatecheck.sys.ini</filename><filename>ru-RU.plg_system_admintools.ini</filename><filename>ru-RU.plg_system_admintools.sys.ini</filename></files><files folder="frontend" target="language/ru-RU"><filename>ru-RU.com_admintools.ini</filename></files></fileset>
+</extension>

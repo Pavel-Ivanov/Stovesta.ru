@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "https://www.joomla.org/xml/dtd/1.6/template-install.dtd">
+<extension version="3.1" type="template" client="site" method="upgrade">
+    <name>b0template</name>
+    <creationDate>2023-01-01</creationDate>
+    <author>b0</author>
+    <authorEmail>john@example.com</authorEmail>
+    <authorUrl>https://www.example.com</authorUrl>
+    <copyright>John Doe 2008</copyright>
+    <license>GNU/GPL</license>
+    <version>1.0.0</version>
+    <description>b0 Template</description>
+    <files>
+        <filename>apple_touch_icon.png</filename>
+        <filename>favicon.ico</filename>
+        <filename>index.php</filename>
+<!--        <filename>template_preview.png</filename>-->
+<!--        <filename>template_thumbnail.png</filename>-->
+        <filename>templateDetails.xml</filename>
+        <folder>css</folder>
+        <folder>fonts</folder>
+        <folder>html</folder>
+        <folder>js</folder>
+    </files>
+    <positions>
+        <position settings="">search</position>
+        <position settings="">logo</position>
+        <position settings="">logo-small</position>
+        <position settings="">toolbar</position>
+        <position settings="">breadcrumbs</position>
+        <position settings="">header</position>
+        <position settings="">header-small</position>
+        <position settings="">cart</position>
+        <position settings="">cart-small</position>
+        <position settings="">social</position>
+        <position settings="">relations</position>
+        <position>content-top</position>
+        <position>top-a</position>
+        <position>top-b</position>
+        <position>top-c</position>
+        <position>top-d</position>
+        <position>bottom-a</position>
+        <position>bottom-b</position>
+        <position>bottom-c</position>
+        <position>bottom-d</position>
+        <position>content-bottom</position>
+        <position>main-top</position>
+        <position>main-bottom</position>
+        <position>sidebar-a</position>
+        <position>sidebar-b</position>
+        <position settings="class">sidebar-logo</position>
+        <position settings="class">sidebar-menu</position>
+        <position settings="class">sidebar-main</position>
+        <position settings="class">sidebar-social</position>
+        <position settings="">footer</position>
+        <position settings="">footer-menu</position>
+        <position settings="">offcanvas</position>
+        <position settings="">debug</position>
+    </positions>
+    <config>
+    </config>
+</extension>

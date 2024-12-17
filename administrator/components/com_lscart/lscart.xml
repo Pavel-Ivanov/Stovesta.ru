@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension type="component" version="3.0" method="upgrade">
+    <name>LsCart</name>
+    <creationDate>September 2016</creationDate>
+    <copyright>2016 Pavel Ivanov</copyright>
+    <license>GNU General Public License версии 2 или более поздней</license>
+    <author>Pavel Ivanov</author>
+    <authorEmail>p.ivanov.spb@gmail.com</authorEmail>
+    <authorUrl>https://stovesta.ru</authorUrl>
+    <version>1.0.0</version>
+    <description>Shopping cart for StoVesta</description>
+
+	<install>
+		<sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.sql</file>
+        </sql>
+	</install>
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.sql</file>
+        </sql>
+    </uninstall>
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+
+	<languages folder="site">
+        <language tag="ru-RU">language/ru-RU/ru-RU.com_lscart.ini</language>
+    </languages>
+
+    <files folder="site">
+        <folder>assets</folder>
+        <folder>controllers</folder>
+        <folder>helpers</folder>
+        <folder>language</folder>
+        <folder>models</folder>
+        <folder>tables</folder>
+        <folder>views</folder>
+        <filename>index.html</filename>
+        <filename>lscart.php</filename>
+		<filename>controller.php</filename>
+        <filename>router.php</filename>
+    </files>
+	
+	<administration>
+		<menu link="option=com_lscart">LsCart</menu>
+		<submenu>
+			<menu view="orders">Orders</menu>
+		</submenu>
+		
+		<files folder="admin">
+			<folder>assets</folder>
+			<folder>controllers</folder>
+			<folder>helpers</folder>
+			<folder>language</folder>
+			<folder>models</folder>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>index.html</filename>
+			<filename>lscart.php</filename>
+			<filename>controller.php</filename>
+		</files>
+		
+		<languages folder="admin">
+            <language tag="ru-RU">language/ru-RU/ru-RU.com_lscart.ini</language>
+            <language tag="ru-RU">language/ru-RU/ru-RU.com_lscart.sys.ini</language>
+        </languages>
+	</administration>
+</extension>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="b0_set_title" addfieldpath="/libraries/mint/forms/fields" label="Search value" description="Simply click button">
+        <field name="section_id" type="meresourcessection" default="" alias="1" label="Раздел" required="true"/>
+        <field name="value_to_search" type="text" default="" label="Значение, которое ищем" required="true" />
+        <field name="value_to_change" type="text" default="" label="Значение, которое добавляем" required="true" />
+<!--
+        <field name="search_type" type="list" label="Тип поиска">
+            <option value="0">LIKE</option>
+            <option value="1">Exact</option>
+        </field>
+-->
+        <field name="search_limit_start" type="text" default="0" label="Limit start" />
+        <field name="search_limit_number" type="text" default="0" label="Limit number" />
+    </fieldset>
+</form>

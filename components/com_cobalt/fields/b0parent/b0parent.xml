@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cobaltfield>
+    <name>B0 Parent</name>
+    <group>Relation Form Elements</group>
+
+    <config>
+        <fields name="params">
+            <fieldset name="tmpl">
+                <field type="filelist" name="template_input" filter="php$" hide_none="1" hide_default="1" directory="/components/com_cobalt/fields/b0parent/tmpl/input" label="F_TMPLINPUT" default="default.php"/>
+                <field type="filelist" name="template_output_list" filter="php$" hide_none="1" hide_default="1" directory="/components/com_cobalt/fields/b0parent/tmpl/output" label="F_TMPLLIST" default="default.php" />
+                <field type="filelist" name="template_output_full" filter="php$" hide_none="1" hide_default="1" directory="/components/com_cobalt/fields/b0parent/tmpl/output" label="F_TMPLFULL" default="default.php"/>
+            </fieldset>
+
+            <fieldset name="advanced" label="FS_RELATION">
+                <field name="strict_to_user" type="accesslevel" label="F_USERNOTSTRICTFOR" default="3" description="F_USERNOTSTRICTFOR_DESCR">
+                    <option value="0">XML_OPT_NOONE</option>
+                </field>
+            </fieldset>
+
+            <fieldset name="ctrl" label="FS_FORMCONTROL">
+                <field name="child_section" type="meresourcessection" required="1" label="F_PARENTTYPESECTION" default="" description="F_PARENTTYPESECTION_DESCR" />
+                <field name="child_type" type="mertype" label="F_PARENTTYPE" required="1" default="" description="F_PARENTTYPE_DESCR" />
+
+                <field name="input_mode" required="true" type="list" default="1" label="F_CHOSERELATEDRECORDSMETHOD">
+                    <option value="2">XML_OPT_AUTOCOMPLETEAJAX</option>
+                    <option value="3">XML_OPT_CHECKBOXES</option>
+                    <option value="4">XML_OPT_MULTISELECT</option>
+                    <option value="5">XML_OPT_POPUP</option>
+                </field>
+                <field name="multi_limit" type="text" size="3" default="10" label="F_LIMITRELATION"/>
+                <field name="max_result" type="text" size="3" default="10" label="F_AUTOCOMPLETEMAXRESULT" description=""/>
+                <field name="control_label" type="text" size="40" default="Add related records" label="F_POPUPLINKTEXT"/>
+                <field label="F_TMPLFULLOVERRIDE" name="tmpl_list" type="mersubtmpls" default="default" description="" tmpltype="itemlist">
+                    <option value="0">X_SECTMPLDEFAULT</option>
+                </field>
+                <field name="orderby" type="list" default="" label="CORDERING">
+                    <option value="r.title ASC">XML_OPT_TITLEASC</option>
+                    <option value="r.title DESC">XML_OPT_TITLEDESC</option>
+                    <option value="RAND() ">XML_OPT_RANDOM</option>
+                </field>
+            </fieldset>
+        </fields>
+
+    </config>
+</cobaltfield>

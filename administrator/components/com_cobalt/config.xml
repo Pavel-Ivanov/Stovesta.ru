@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset name="global" label="XML_FSETLBL_CNF_GLOBAL" description="XML_FSETDESC_CNF_GLOBAL" addfieldpath="/administrator/components/com_cobalt/models/fields">
+		<field name="general_upload" type="medirectories" label="XML_FIELD_LABEL_CNF_GENERAL_UPLOAD" required="true" default="uploads" description="XML_FIELD_DESCR_CNF_GENERAL_UPLOAD" hide_default="1" directory="" relative_path="1"
+			relative_path_value="root" levels="1" invite_label="Select Secure Dir" exclude="administrator|media|.svn|.settings|CVS|tmp|cache|components|libraries|plugins|templates|includes|languge|modules|xmlrpc|language|logs" />
+		<field name="folder_format" label="XML_FIELD_LABEL_CNF_FOLDERFORMAT" type="list" default="Y-m" description="XML_FIELD_DESCR_CNF_FOLDERFORMATDESCR">
+			<option value="Y">YYYY</option>
+			<option value="Y-m">YYYY-MM</option>
+			<option value="Y-m-d">YYYY-MM-DD</option>
+		</field>
+		<field name="community" type="cfolderlist" label="XML_FIELD_LABEL_CNF_COMMUNITYINTEGR" hide_none="1" hide_default="1" default="com_cobalt" directory="/components/com_cobalt/library/php/community" description="XML_FIELD_DESCR_CNF_COMMUNITYINTEGR" />
+		<field label="XML_MODERATOR" name="moderator" type="user" default="745" />
+		<field name="captcha" type="plugins" folder="captcha" default="recaptcha" label="XML_CAPTCHA" description="XML_CAPTCHA_DESCR" filter="cmd" >
+			<option value="">JOPTION_USE_DEFAULT</option>
+			<option value="0">JOPTION_DO_NOT_USE</option>
+		</field>
+
+		<field name="general_copyright" type="radio" class="btn-group" label="XML_FIELD_LABEL_CNF_SHOWPOWEREDBY" default="1" description="XML_FIELD_DESCR_CNF_SHOWPOWEREDBY">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="compatibility" type="radio" class="btn-group" label="XML_FIELD_LABEL_CNF_COMPAT" default="0" description="XML_FIELD_LABEL_CNF_COMPATDESCR">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="general_help" label="XML_FIELD_LABEL_CNF_SHOWHELPBAR" type="radio" class="btn-group" default="1" description="XML_FIELD_DESCR_CNF_SHOWHELPBAR">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="gravatar" type="radio" class="btn-group" label="XML_FIELD_LABEL_CNF_GRAVATAR" default="1">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="cron_key" type="text" default="" size="40" label="C_CRONSECRETWORD" />
+		<field name="map_key" type="text" default="" size="40" label="Google map API key" />
+	</fieldset>
+
+	<fieldset name="router" label="XML_FIELD_LABEL_SEF" description="XML_FSETDESC_CNF_SEO">
+		<field label="XML_FIELD_LABEL_CNF_ROUTER" name="sef_router" type="filelist" directory="/components/com_cobalt/routers" hide_none="1" hide_default="1" default="main_router.php" filter=".php" />
+		<field label="XML_FIELD_LABEL_CNF_CATEGORYPATH" name="sef_category" type="list" default="0" description="XML_FIELD_DESCR_CNF_CATEGORYPATH">
+			<option value="0">O_CNF_CURCATEGORY</option>
+			<option value="full">O_CNF_FULLCATEGORYPATH</option>
+		</field>
+		<field label="XML_FIELD_LABEL_CNF_FILTERNOFOLLOW" class="btn-group" name="filter_nofollow" type="radio" default="1" description="XML_LINK_NOFOLLOW">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="separator" default=":" type="list" label="JFIELD_METADATA_SEPARATOR_LABEL" description="JFIELD_METADATA_SEPARATOR_DESCR">
+			<option value=":">:</option>
+			<option value="_">_</option>
+			<option value="~">~</option>
+		</field>
+		<field name="robots" type="list" label="JFIELD_METADATA_ROBOTS_LABEL" description="JFIELD_METADATA_ROBOTS_DESC">
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="index, follow">JGLOBAL_INDEX_FOLLOW</option>
+			<option value="noindex, follow">JGLOBAL_NOINDEX_FOLLOW</option>
+			<option value="index, nofollow">JGLOBAL_INDEX_NOFOLLOW</option>
+			<option value="noindex, nofollow">JGLOBAL_NOINDEX_NOFOLLOW</option>
+		</field>
+		<field name="author" type="text" label="JAUTHOR" description="JFIELD_METADATA_AUTHOR_DESC" size="20" />
+		<field name="rights" type="textarea" label="JFIELD_META_RIGHTS_LABEL" description="JFIELD_META_RIGHTS_DESC" required="" filter="string" cols="30" rows="2" />
+		<field name="metakey" type="textarea" label="JFIELD_META_KEYWORDS_LABEL" description="JFIELD_META_KEYWORDS_DESC" class="inputbox" rows="3" cols="30" />
+		<field name="metadesc" type="textarea" label="JFIELD_META_DESCRIPTION_LABEL" description="JFIELD_META_DESCRIPTION_DESC" class="inputbox" rows="3" cols="30" />
+	</fieldset>
+
+	<fieldset name="censor" label="XML_FSETLBL_CNF_CENSOR">
+		<field label="XML_FIELD_LABEL_CNF_ENABLECENSOR" name="censor" type="radio" class="btn-group" default="1">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field label="XML_FIELD_LABEL_CNF_BADWORDS" name="censor_words" type="textarea" default="fuck, porn, porno, bitch" description="XML_FIELD_DESCR_CNF_BADWORDS" cols="35" rows="5" />
+		<field label="XML_FIELD_LABEL_CNF_REPLACE" name="censor_replace" type="text" default="CENSORED" />
+	</fieldset>
+	
+	<fieldset name="permissions" label="JCONFIG_PERMISSIONS_LABEL" description="JCONFIG_PERMISSIONS_DESC">
+		<field name="rules" type="rules" label="JCONFIG_PERMISSIONS_LABEL" class="inputbox" filter="rules" validate="rules" component="com_cobalt" section="component" />
+	</fieldset>
+
+	<fieldset name="b0" label="b0 параметры">
+		<field name="yandex_id" type="text" maxlength="20"  required="true" default="" label="ID счетчика Yandex" />
+		<field name="phone_delivery" type="text" maxlength="20" required="true" default="" label="Телефон доставки" />
+		<field name="phone_common" type="text" maxlength="20" required="true" default="" label="Телефон общий" />
+		<field name="vk_url" type="url" required="true" label="Ссылка на группу ВКонтакте" />
+	</fieldset>
+
+<!--
+	<fieldset name="b0_prices" label="b0 цены" description="">
+		<field name="priceDiscountOriginalSimple" type="integer" first="1" last="50" step="1"  required="true" label="Скидка стандарт оригинал, %" />
+		<field name="priceDiscountNonOriginalSimple" type="integer" first="1" last="50" step="1" required="true" label="Скидка стандарт не оригинал, %" />
+
+		<field name="priceDiscountOriginalSilver" type="integer" first="1" last="50" step="1"  required="true" label="Скидка серебряный оригинал, %" />
+		<field name="priceDiscountNonOriginalSilver" type="integer" first="1" last="50" step="1" required="true" label="Скидка серебряный не оригинал, %" />
+
+		<field name="priceDiscountOriginalGold" type="integer" first="1" last="50" step="1"  required="true" label="Скидка золотой оригинал, %" />
+		<field name="priceDiscountNonOriginalGold" type="integer" first="1" last="50" step="1" required="true" label="Скидка золотой не оригинал, %" />
+
+		<field name="priceDiscountOriginalDelivery" type="integer" first="1" last="50" step="1"  required="true" label="Скидка доставка СПб и ЛО оригинал, %" />
+		<field name="priceDiscountNonOriginalDelivery" type="integer" first="1" last="50" step="1" required="true" label="Скидка доставка СПб и ЛО не оригинал, %" />
+
+		<field name="priceDiscountOriginalDeliveryRegions" type="integer" first="1" last="50" step="1"  required="true" label="Скидка доставка регионы оригинал, %" />
+		<field name="priceDiscountNonOriginalDeliveryRegions" type="integer" first="1" last="50" step="1" required="true" label="Скидка доставка регионы не оригинал, %" />
+
+		<field name="priceDiscountOriginalDeliveryMyself" type="integer" first="1" last="50" step="1"  required="true" label="Скидка самовывоз оригинал, %" />
+		<field name="priceDiscountNonOriginalDeliveryMyself" type="integer" first="1" last="50" step="1" required="true" label="Скидка самовывоз не оригинал, %" />
+
+		<field name="priceDiscountSimple" type="integer" first="1" last="50" step="1"  required="true" label="Скидка стандарт, %" />
+		<field name="priceDiscountSilver" type="integer" first="1" last="50" step="1"  required="true" label="Скидка серебряный, %" />
+		<field name="priceDiscountGold" type="integer" first="1" last="50" step="1"  required="true" label="Скидка золотой, %" />
+		<field name="priceDiscountFirstVisit" type="integer" first="1" last="50" step="1"  required="true" label="Скидка первый визит, %" />
+	</fieldset>
+-->
+
+	<fieldset name="b0_sync" label="b0 синхронизация" description="Параметры синхронизации с 1С">
+		<field name="enableSyncSave" label="Карточка товара" type="radio" class="btn-group" default="1">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="enableSyncSaveRemains" label="Расходный документ" type="radio" class="btn-group" default="1">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="enableVersionControl" label="Контроль версий" type="radio" class="btn-group" default="0">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="enableYml" label="Формирование YML файла" type="radio" class="btn-group" default="1">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="enableSuccessEmail" label="Отправка Email при успехе - карточка товара" type="radio" class="btn-group" default="0">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="enableSuccessEmailRemains" label="Отправка Email при успехе - расходный документ" type="radio" class="btn-group" default="0">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="enableSuccessLogs" label="Запись лога при успехе" type="radio" class="btn-group" default="0">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="enableRequestLog" label="Запись входного массива" type="radio" class="btn-group" default="0">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+	</fieldset>
+</config>

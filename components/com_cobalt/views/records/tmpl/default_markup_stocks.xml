@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<name>b0 Stocks</name>
+	<author>Pavel Ivanov</author>
+	<version>1.00</version>
+	<description>Template Stocks layout</description>
+
+	<!-- Основные параметры -->
+	<fields name="main">
+		<!-- Общие параметры -->
+		<fieldset name="general">
+		</fieldset>
+		<!-- Альфа-индекс -->
+		<fieldset name="alpha" label="">
+		</fieldset>
+	</fields>
+	<!-- Заголовки -->
+	<fields name="title">
+		<fieldset name="title" label="CTITLE">
+			<field name="title_show" type="list" default="1" label="X_SHOWTITLE">
+				<option value="0">X_TITLENO</option>
+				<option value="1">X_TITLESECCAT</option>
+				<option value="2">X_TITLEMENUPARAM</option>
+				<option value="3">X_TITLECUSTOM</option>
+			</field>
+			<field name="title_section_name" type="radio" class="btn-group" default="1" label="X_SECINTITLE">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="title_category_name" type="radio" class="btn-group" default="1" label="X_CATINTITLE">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="title_static" type="text" size="40" default="This is static title in markup template parameters" label="X_TITLECUSTOMSTAT" />
+		</fieldset>
+		<fieldset name="t1" label="">
+		</fieldset>
+		<fieldset name="t2" label="">
+		</fieldset>
+	</fields>
+	<!-- Меню раздела -->
+	<fields name="menu">
+		<fieldset name="menu" label="CMENUSTYLE">
+			<field name="menu" type="radio" class="btn-group" default="1" label="CENABLEMENU">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+			<field name="menu_home" type="radio" class="btn-group" default="1" label="CENABLEMENUHOME">
+				<option value="0">CNO</option>
+				<option value="1">CYES</option>
+			</field>
+		</fieldset>
+
+		<fieldset name="micons" label="">
+		</fieldset>
+
+		<fieldset name="m1" label="">
+		</fieldset>
+
+		<fieldset name="m2" label="">
+		</fieldset>
+
+		<fieldset name="m3" label="CMENUELEMENTS">
+			<field name="menu_user" type="accesslevel" default="2" label="X_USERMENU">
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="menu_templates" type="accesslevel" default="1" label="X_TEMPLATESWITCH" >
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="menu_newrecord" type="accesslevel" default="1" label="X_NEWREC" >
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+			<field name="menu_newrecord_home" type="accesslevel" default="1" label="X_NEWRECNOME" >
+				<option value="0">XML_OPT_NOONE</option>
+			</field>
+		</fieldset>
+
+		<fieldset name="m4" label="">
+		</fieldset>
+
+		<fieldset name="m5" label="">
+		</fieldset>
+
+		<fieldset name="m6" label="">
+		</fieldset>
+
+		<fieldset name="mlabels" label="">
+		</fieldset>
+
+		<fieldset name="mlabels2" label="">
+		</fieldset>
+	</fields>
+	<!-- Фильтры -->
+	<fields name="filters">
+		<fieldset name="filters" label="">
+		</fieldset>
+		<fieldset name="f2" label="">
+		</fieldset>
+		<fieldset name="f3" label="">
+		</fieldset>
+		<fieldset name="f4" label="">
+		</fieldset>
+		<fieldset name="f5" label="">
+		</fieldset>
+		<fieldset name="f6" label="">
+		</fieldset>
+	</fields>
+	<!-- Персонализация -->
+	<fields name="personal">
+		<fieldset name="user" label="">
+		</fieldset>
+		<fieldset name="uinfo" label="">
+		</fieldset>
+	</fields>
+</form>

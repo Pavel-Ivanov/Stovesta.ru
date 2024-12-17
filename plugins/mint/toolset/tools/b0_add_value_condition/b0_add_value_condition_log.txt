@@ -1,0 +1,3 @@
+===== 2018-01-26 06:56:18 =====
+Добавляем: 2018 если установлен: Lada Vesta sedan
+SELECT * FROM #__js_res_record WHERE section_id=1 AND id IN(SELECT record_id FROM #__js_res_record_values WHERE field_id=13 AND field_value='Lada Vesta sedan') LIMIT 0,5

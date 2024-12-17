@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	version="1.1"
+	client="site"
+	method="upgrade">
+	<name>Contactus</name>
+	<author>Artem Yegorov</author>
+	<creationDate>February 2017</creationDate>
+	<copyright>Copyright (C) 2016 Artem Yegorov All rights reserved.</copyright>
+	<license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+	<authorEmail>rubacking@gmail.com</authorEmail>
+	<authorUrl>http://joomly.net</authorUrl>
+	<version>3.18</version>
+	<description>Joomly Contactus</description>
+	<files>
+		<filename module="mod_contactus">mod_contactus.php</filename>
+		<folder>admin</folder>
+		<folder>tmpl</folder>
+		<folder>js</folder>
+		<folder>css</folder>
+		<folder>sql</folder>
+		<folder>languages</folder>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<filename>mod_contactus.xml</filename>		
+	</files>
+
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.sql</file>
+		</sql>
+	</install>
+
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+
+
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.sql</file>
+		</sql>
+	</uninstall>
+	
+	
+	<languages>
+		<language tag="en-GB">languages/en-GB.mod_contactus.ini</language>
+		<language tag="en-GB">languages/en-GB.mod_contactus.sys.ini</language>
+		<language tag="ru-RU">languages/ru-RU.mod_contactus.ini</language>
+		<language tag="ru-RU">languages/ru-RU.mod_contactus.sys.ini</language>
+		<language tag="es-ES">languages/es-ES.mod_contactus.ini</language>
+		<language tag="es-ES">languages/es-ES.mod_contactus.sys.ini</language>
+	</languages>
+	
+	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_CONACTUS" />
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+					<field
+						name="admin_mail"
+						type="text"
+						default=""
+						label="MOD_CONTACTUS_YOUR_MAIL"
+						description="MOD_CONTACTUS_YOUR_MAIL_DESC" />	
+					<field
+						name="mail_subject_text"
+						type="text"
+						hint="MOD_CONTACTUS_MAIL_SUBJECT"
+						default=""
+						label="MOD_CONTACTUS_MAIL_SUBJECT_TEXT"
+						description="MOD_CONTACTUS_MAIL_SUBJECT_TEXT_DESC" />
+					<field
+						name="redirect_page"
+						type="text"
+						default=""
+						label="MOD_CONTACTUS_REDIRECT_PAGE"
+						description="MOD_CONTACTUS_REDIRECT_PAGE_DESC" />				
+					<field
+						name="color"
+						type="color"
+						default="#21ad33"
+						label="MOD_CONTACTUS_BUTTON_COLOR"
+						description="MOD_CONTACTUS_BUTTON_COLOR_DESC">
+					</field>
+					<field
+						name="form_max_width"
+						type="text"
+						default="400"
+						label="MOD_CONTACTUS_FORM_MAX_WIDTH"
+						description="MOD_CONTACTUS_FORM_MAX_WIDTH_DESC">
+					</field>
+					<field
+					name="uploader"
+					type="radio"
+					class="btn-group btn-group-yesno"
+					default="1"
+					label="MOD_CONTACTUS_UPLOADER"
+					description="MOD_CONTACTUS_UPLOADER_DESC">
+					<option
+						value="1">MOD_CONTACTUS_UPLOADER_YES</option>
+					<option
+						value="0">MOD_CONTACTUS_UPLOADER_NO</option>
+				</field>
+				<field
+					name="captcha"
+					type="radio"
+					class="btn-group btn-group-yesno"
+					default="0"
+					label="MOD_CONTACTUS_CAPTCHA"
+					description="MOD_CONTACTUS_CAPTCHA_DESC">
+					<option
+						value="1">MOD_CONTACTUS_CAPTCHA_YES</option>
+					<option
+						value="0">MOD_CONTACTUS_CAPTCHA_NO</option>	
+				</field>
+				<field
+					showon="captcha:1"
+					name="captcha_size"
+					type="radio"
+					class="btn-group btn-group-yesno"
+					default="default"
+					label="MOD_CONTACTUS_CAPTCHA_SIZE"
+					description="MOD_CONTACTUS_CAPTCHA_SIZE_DESC">
+					<option
+						value="default">MOD_CONTACTUS_CAPTCHA_DEFAULT</option>
+					<option
+						value="compact">MOD_CONTACTUS_CAPTCHA_COMPACT</option>	
+					<option
+						value="invisible">MOD_CONTACTUS_CAPTCHA_INVISIBLE</option>		
+				</field>
+				<field
+					showon="captcha:1"
+					name="captcha_sitekey"
+					type="text"
+					default=""
+					label="MOD_CONTACTUS_CAPTCHA_SITEKEY"
+					description="MOD_CONTACTUS_CAPTCHA_SITEKEY" />	
+				<field
+					showon="captcha:1"
+					name="captcha_secretkey"
+					type="text"
+					default=""
+					label="MOD_CONTACTUS_CAPTCHA_SECRET"
+					description="MOD_CONTACTUS_CAPTCHA_SECRET" />	
+				<field showon="captcha:1" name="note" type="note" class="alert alert-success" description="MOD_CONTACTUS_CAPTCHA_MAIN_DESC" />			
+					<field
+						name="margin"
+						type="radio"
+						class="btn-group btn-group-yesno"
+						default="left"
+						label="MOD_CONTACTUS_ALIGN"
+						description="MOD_CONTACTUS_ALIGN_DESC">
+						<option
+							value="left">MOD_CONTACTUS_LEFT</option>
+						<option
+							value="center">MOD_CONTACTUS_CENTER</option>
+						<option
+							value="right">MOD_CONTACTUS_RIGHT</option>
+					</field>
+					<field
+						name="personal"
+						type="radio"
+						class="btn-group btn-group-yesno"
+						default="0"
+						label="MOD_CONTACTUS_CONSENT_PERSONAL_DATA"
+						description="MOD_CONTACTUS_CONSENT_PERSONAL_DATA">
+						<option
+							value="1">MOD_CONTACTUS_REQUIRED_YES</option>
+						<option
+							value="0">MOD_CONTACTUS_REQUIRED_NO</option>
+					</field>	
+					<field
+						showon="personal:1"
+						name="personal_link"
+						type="text"
+						hint=""
+						default="/"
+						label="MOD_CONTACTUS_PERSONAL_DATA_LINK"
+						description="MOD_CONTACTUS_PERSONAL_DATA_LINK_DESC" />	
+					<field type="spacer" name="myspacer" hr="true" />
+					<field name="note1" type="note" label="MOD_CONTACTUS_SPACER_LIGHTBOX" />
+					<field
+						name="lightbox"
+						type="radio"
+						class="btn-group btn-group-yesno"
+						default="form"
+						label="MOD_CONTACTUS_LIGHTBOX"
+						description="MOD_CONTACTUS_LIGHTBOX_DESC">
+						<option
+							value="form">MOD_CONTACTUS_SHOW_FORM</option>
+						<option
+							value="lightbox">MOD_CONTACTUS_SHOW_LIGHTBOX</option>
+					</field>
+					<field
+						showon="lightbox:lightbox"
+						name="lightbox_element"
+						type="list"
+						default="1"
+						label="MOD_CONTACTUS_LIGHTBOX_ELEMENT"
+						description="MOD_CONTACTUS_LIGHTBOX_ELEMENT_DESC">
+						<option
+							value="0">MOD_CONTACTUS_NONE</option>
+						<option
+							value="1">MOD_CONTACTUS_BUTTON</option>
+						<option
+							value="2">MOD_CONTACTUS_BUTTON_SLIDING</option>
+					</field>
+					<field
+						showon="lightbox:lightbox[AND]lightbox_element:2"
+						name="sticky_align"
+						type="list"
+						default="1"
+						label="MOD_CONTACTUS_SIDE"
+						description="MOD_CONTACTUS_SIDE_DESC">
+						<option
+							value="left">MOD_CONTACTUS_LEFT_SIDE</option>
+						<option
+							value="bottom">MOD_CONTACTUS_BOTTOM_SIDE</option>
+						<option
+							value="right">MOD_CONTACTUS_RIGHT_SIDE</option>
+					</field>
+					<field
+						showon="lightbox:lightbox[AND]lightbox_element:2"
+						name="sticky_align_val"
+						type="text"
+						default="60%"
+						label="MOD_CONTACTUS_MARGIN"
+						description="MOD_CONTACTUS_MARGIN_DESC" />		
+					<field type="spacer" name="myspacer2" hr="true" />
+					<field name="note11" type="note" label="MOD_CONTACTUS_TEXTS" />	
+					<field
+						showon="lightbox:lightbox"	
+						name="lightbox_button_caption"
+						type="text"
+						hint="MOD_CONTACTUS_CONTACT_US"
+						default=""
+						label="MOD_CONTACTUS_LIGHTBOX_BUTTON_CAPTION"
+						description="MOD_CONTACTUS_LIGHTBOX_BUTTON_CAPTION_DESC" />		
+					<field
+						showon="lightbox:lightbox"	
+						name="title_name"
+						type="text"
+						hint="MOD_CONTACTUS_TITLE_NAME_MODULE"
+						default=""
+						label="MOD_CONTACTUS_TITLE_NAME"
+						description="MOD_CONTACTUS_TITLE_NAME_DESC" />	
+					<field
+						name="button_send"
+						type="text"
+						hint="MOD_CONTACTUS_SEND"
+						default=""
+						label="MOD_CONTACTUS_SEND_BUTTON_CAPTION"
+						description="MOD_CONTACTUS_SEND_BUTTON_CAPTION_DESC" />				
+					<field 
+						name="alert_message" 
+						type="textarea" 
+						default="" 
+						label="MOD_JOOMLY_CALLBACK_TEXT_ALERTMESSAGE" 
+						description="MOD_JOOMLY_CALLBACK_TEXT_ALERTMESSAGE_DESC" 
+						rows="10" cols="5" 
+						filter="raw"/>
+					<field
+						name="alert_title_name"
+						type="text"
+						hint="MOD_CONTACTUS_TITLE_NAME_MODULE"
+						default=""
+						label="MOD_CONTACTUS_ALERT_TITLE_NAME"
+						description="MOD_CONTACTUS_ALERT_TITLE_NAME_DESC" />		
+			</fieldset>
+			<fieldset name="fields-manager" label="MOD_CONTACTUS_FIELDS" addfieldpath="/modules/mod_contactus/admin/field">	
+				<field  type="fields" name="field"/>
+			</fieldset>
+			<fieldset name="analytics" label="MOD_CONTACTUS_ANALYTICS">
+				<field name="note2" type="note" label="MOD_CONTACTUS_GOOGLE_ANALYTICS" />
+				<field
+					name="google_analytics_category"
+					type="text"
+					default=""
+					label="MOD_CONTACTUS_GOOGLE_ANALYTICS_CATEGORY"
+					description="MOD_CONTACTUS_GOOGLE_ANALYTICS_CATEGORY_DESC" />		
+				<field
+					name="google_analytics_action"
+					type="text"
+					default=""
+					label="MOD_CONTACTUS_GOOGLE_ANALYTICS_ACTION"
+					description="MOD_CONTACTUS_GOOGLE_ANALYTICS_ACTION_DESC" />		
+				<field
+					name="google_analytics_label"
+					type="text"
+					default=""
+					label="MOD_CONTACTUS_GOOGLE_ANALYTICS_LABEL"
+					description="MOD_CONTACTUS_GOOGLE_ANALYTICS_LABEL_DESC" />
+				<field
+					name="google_analytics_value"
+					type="text"
+					default=""
+					label="MOD_CONTACTUS_GOOGLE_ANALYTICS_VALUE"
+					description="MOD_CONTACTUS_GOOGLE_ANALYTICS_VALUE_DESC" />						
+				<field type="spacer" name="myspacer1" hr="true" />	
+				<field name="note3" type="note" label="MOD_CONTACTUS_YANDEX_METRIKA" />
+				<field
+					name="yandex_metrika_id"
+					type="text"
+					default=""
+					label="MOD_CONTACTUS_YANDEX_METRIKA_ID"
+					description="MOD_CONTACTUS_YANDEX_METRIKA_ID_DESC" />
+				<field
+					name="yandex_metrika_goal"
+					type="text"
+					default=""
+					label="MOD_CONTACTUS_YANDEX_METRIKA_GOAL"
+					description="MOD_CONTACTUS_YANDEX_METRIKA_GOAL_DESC" />			
+			</fieldset>
+			<fieldset name="sms" label="MOD_CONTACTUS_SMS">
+				<field
+					name="sms_flag"
+					type="radio"
+					class="btn-group btn-group-yesno"
+					default="0"
+					label="MOD_CONTACTUS_SMS_FLAG"
+					description="MOD_CONTACTUS_SMS_FLAG_DESC">
+					<option
+						value="1">MOD_CONTACTUS_SMS_SHOW_YES</option>
+					<option
+						value="0">MOD_CONTACTUS_SMS_SHOW_NO</option>
+				</field>
+				<field
+					name="sms_api_id"
+					type="text"
+					hint="fd1111-58dd-b222-1111-5a2368c1dd6b"
+					default=""
+					label="MOD_CONTACTUS_SMS_API_ID"
+					description="MOD_CONTACTUS_SMS_API_ID_DESC" />
+				<field
+					name="sms_self_number"
+					type="text"
+					hint="79161112233"
+					default=""
+					label="MOD_CONTACTUS_SMS_SELF_NUMBER"
+					description="MOD_CONTACTUS_SMS_SELF_NUMBER_DESC" />	
+				<field
+					name="sms_text"
+					type="text"
+					hint="MOD_CONTACTUS_SMS_TEXT_DEFAULT"
+					default=""
+					label="MOD_CONTACTUS_SMS_TEXT"
+					description="MOD_CONTACTUS_SMS_TEXT_DESC" />		
+			</fieldset>
+			<fieldset name="advanced">
+				<field
+					name="moduleclass_sfx"
+					type="textarea"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
+					rows="3"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

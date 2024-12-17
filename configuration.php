@@ -1,14 +1,5 @@
 <?php
-/**
- * Joomla Global Configuration
- *
- * This file has been modified by ANGIE, the Akeeba Backup restoration script, when restoring or transferring your site.
- * 
- * This comment is removed whe you save the Global Configuration from Joomla's interface and/or when a third party
- * extension modifies your site's Global Configuration.
- */
-class JConfig
-{
+class JConfig {
 	public $MetaAuthor = '1';
 	public $MetaDesc = 'StoVesta – аксессуары, запчасти, ремонт и техническое обслуживание Лада Веста, Lada XRay, Лада Гранта и Лада Ларгус';
 	public $MetaKeys = '';
@@ -34,7 +25,7 @@ class JConfig
 	public $debug_lang_const = '1';
 	public $display_offline_message = '1';
 	public $editor = 'none';
-	public $error_reporting = 'none';
+	public $error_reporting = 'development';
 	public $feed_email = 'none';
 	public $feed_limit = '10';
 	public $force_ssl = '2';

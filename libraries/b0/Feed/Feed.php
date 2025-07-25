@@ -6,10 +6,10 @@ JImport('b0.Feed.FeedConfigCategories');
 class Feed
 {
 	private array $config = [];
-	private string $sectionId;
-	private string $fieldAvailability;
-	private string $fieldModel;
-	private string $modelName;
+	private array $sectionId;
+//	private string $fieldAvailability;
+	private array $fieldModel;
+	private array $modelName;
 	private int $limit;
 	
 	public array $offers = [];
@@ -28,7 +28,7 @@ class Feed
 	{
 		$this->config = $config;
 		$this->sectionId = $config['sectionId'];
-		$this->fieldAvailability = $config['fieldAvailability'];
+//		$this->fieldAvailability = $config['fieldAvailability'];
 		$this->fieldModel = $config['fieldModel'];
 		$this->modelName = $config['modelName'];
 		$this->limit = $config['limit'];
@@ -42,7 +42,7 @@ class Feed
 //		$this->offers          = $this->getOffers();
 		
 		$this->offers = $this->getOffers();
-//		b0dd($this->offers);
+//		JExit(b0debug($this->offers));
 	}
 	
 	// Создает массив товаров
@@ -63,23 +63,49 @@ class Feed
 		return $offers;
 	}
 	
-	private function getItems()
-	{
-		/* получаем записи из БД */
-		$db    = JFactory::getDbo();
-		$query = "SELECT id, title, section_id, meta_descr, alias, categories, fields FROM #__js_res_record
-                    WHERE (
-                        section_id = '$this->sectionId' AND
-                        id IN (SELECT record_id FROM #__js_res_record_values WHERE (field_id='$this->fieldModel' AND field_value='$this->modelName')) AND
-                        id IN (SELECT record_id FROM #__js_res_record_values WHERE (field_id='$this->fieldAvailability' AND field_value=-1)) AND
-                        published = 1
-                    )";
-		if ($this->limit > 0) {
-			$query.= " LIMIT 0,{$this->limit}";
-		}
-		$db->setQuery($query);
-		return $db->loadObjectList();
-	}
+ private function getItems()
+ {
+     /* получаем записи из БД */
+     $db = JFactory::getDbo();
+ 
+     // Подзапрос
+     $subQuery = $db->getQuery(true)
+         ->select('DISTINCT record_id')
+         ->from('#__js_res_record_values');
+     
+     if (!empty($this->fieldModel)) {
+         $subQuery->where('field_id' . ' IN (' . implode(',', $this->fieldModel) . ')');
+     }
+     
+     if (!empty($this->modelName)) {
+         $quotedValues = array_map(
+             function ($value) use ($db) {
+                return $db->quote($value);
+            },
+             $this->modelName
+         );
+         
+         $subQuery->where('field_value IN (' . implode(',', $quotedValues) . ')');
+     }
+//     JExit(b0dd($subQuery));
+     $db->setQuery($subQuery);
+     $subQueryIds = $db->loadColumn();
+
+     // Основной запрос
+     $query = $db->getQuery(true)
+         ->select('id, title, section_id, meta_descr, alias, categories, fields')
+         ->from('#__js_res_record')
+//         ->where('section_id' . ' = ' . $this->sectionId)
+         ->where('id' . ' IN (' . $subQuery . ')')
+         ->where('published = 1');
+ 
+     if ($this->limit > 0) {
+         $query->setLimit($this->limit);
+     }
+ 
+     $db->setQuery($query);
+     return $db->loadObjectList();
+ }
 	/*
 	 * Выводит лист офферов
 	 */

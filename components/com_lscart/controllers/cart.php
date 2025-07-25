@@ -239,7 +239,7 @@ class LscartControllerCart extends JControllerLegacy
                 break;
             case CartConfig::CART_ID_KHIMIKOV:
                 $emailParamsSystem['recipient'] = CartConfig::CART_EMAIL_RECIPIENT_SHOP[CartConfig::CART_ID_KHIMIKOV];
-                $emailBody .= 'Магазин: ш. Революции, д. 84-К<br>';
+                $emailBody .= 'Магазин: Кудровский пр-д, 5<br>';
                 break;
             case CartConfig::CART_ID_KULTURY:
                 $emailParamsSystem['recipient'] = CartConfig::CART_EMAIL_RECIPIENT_SHOP[CartConfig::CART_ID_KULTURY];
@@ -267,7 +267,7 @@ class LscartControllerCart extends JControllerLegacy
 			$emailBodyCustomer .= $item['code'] . ' / ' . $item['title'] . ' - <b>' .
 				$item['quantity'] . '</b> шт. * '.$item['price'].
 				' руб. = '.$item['amount'].' руб.<br>';
-			$emailBody .= '     *** наличие: индустриальный- <b>'.$availability[$id]['khimikov'].
+			$emailBody .= '     *** наличие: большевиков- <b>'.$availability[$id]['khimikov'].
 				'</b> / гагарина- <b>'.$availability[$id]['sedova'].
 				'</b> / жукова- <b>'.$availability[$id]['zhukova'].
 				'</b> / культуры- <b>'.$availability[$id]['kultury'].

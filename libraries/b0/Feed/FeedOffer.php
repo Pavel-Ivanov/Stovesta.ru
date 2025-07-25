@@ -5,6 +5,7 @@ JImport('b0.Feed.FeedConfig');
 JImport('b0.Product.ProductConfig');
 JImport('b0.Sparepart.SparepartIds');
 JImport('b0.Accessory.AccessoryIds');
+JImport('b0.Work.WorkIds');
 
 class FeedOffer
 {
@@ -72,8 +73,11 @@ class FeedOffer
 					return 1;
 				}
 				break;
+			case WorkIds::ID_SECTION:
+                return 1;
+				break;
 			default:
-				return false;
+				return 1;
 		}
 		
 		// Получаем название категории
@@ -133,6 +137,12 @@ class FeedOffer
 				$description .= isset($this->fields[AccessoryIds::ID_DESCRIPTION]) ? str_ireplace('&nbsp;','',$this->fields[AccessoryIds::ID_DESCRIPTION]) : '';
 				$description .= ']]>';
 				return $description;
+			case WorkIds::ID_SECTION:
+				$description = '<![CDATA[';
+				$description .= '<p>' . $item->title . ' для ' . implode(', ', $this->fields[WorkIds::ID_MODEL]) . '.</p>';
+				$description .= isset($this->fields[WorkIds::ID_DESCRIPTION]) ? str_ireplace('&nbsp;','',$this->fields[WorkIds::ID_DESCRIPTION]) : '';
+				$description .= ']]>';
+				return $description;
 			default:
 				return '';
 		}
@@ -140,26 +150,22 @@ class FeedOffer
 	
 	private function getPriceGeneral(): int
 	{
-		switch ($this->sectionId) {
-			case SparepartIds::ID_SECTION:
-				return (int) $this->fields[SparepartIds::ID_PRICE_GENERAL];
-			case AccessoryIds::ID_SECTION:
-				return (int) $this->fields[AccessoryIds::ID_PRICE_GENERAL];
-			default:
-				return '';
-		}
+        return match ((int)$this->sectionId) {
+            SparepartIds::ID_SECTION => (int)$this->fields[SparepartIds::ID_PRICE_GENERAL],
+            AccessoryIds::ID_SECTION => (int)$this->fields[AccessoryIds::ID_PRICE_GENERAL],
+            WorkIds::ID_SECTION => (int)$this->fields[WorkIds::ID_PRICE_GENERAL],
+            default => 0,
+        };
 	}
 
 	private function getPriceSpecial(): int
 	{
-		switch ($this->sectionId) {
-			case SparepartIds::ID_SECTION:
-				return (int) $this->fields[SparepartIds::ID_PRICE_SPECIAL];
-			case AccessoryIds::ID_SECTION:
-				return (int) $this->fields[AccessoryIds::ID_PRICE_SPECIAL];
-			default:
-				return '';
-		}
+        return match ((int)$this->sectionId) {
+            SparepartIds::ID_SECTION => (int)$this->fields[SparepartIds::ID_PRICE_SPECIAL],
+            AccessoryIds::ID_SECTION => (int)$this->fields[AccessoryIds::ID_PRICE_SPECIAL],
+            WorkIds::ID_SECTION => (int)$this->fields[WorkIds::ID_PRICE_SPECIAL],
+            default => 0,
+        };
 	}
 	
 	private function getPriceDelivery(): string
@@ -179,6 +185,8 @@ class FeedOffer
 				else {
 					return (int) round($this->fields[AccessoryIds::ID_PRICE_GENERAL] * ProductConfig::PRICE_DISCOUNT_NON_ORIGINAL_DELIVERY);
 				}
+            case WorkIds::ID_SECTION:
+                return 0;
 			default:
 				return '';
 		}
@@ -186,26 +194,21 @@ class FeedOffer
 	
 	private function getIsSpecial():bool
 	{
-		switch ($this->sectionId) {
-			case SparepartIds::ID_SECTION:
-				return $this->fields[SparepartIds::ID_IS_SPECIAL] === 1;
-			case AccessoryIds::ID_SECTION:
-				return $this->fields[AccessoryIds::ID_IS_SPECIAL] === 1;
-			default:
-				return false;
-		}
+        return match ((int)$this->sectionId) {
+            SparepartIds::ID_SECTION => $this->fields[SparepartIds::ID_IS_SPECIAL] === 1,
+            AccessoryIds::ID_SECTION => $this->fields[AccessoryIds::ID_IS_SPECIAL] === 1,
+            WorkIds::ID_SECTION => $this->fields[WorkIds::ID_IS_SPECIAL] === 1,
+            default => false,
+        };
 	}
 
 	private function getIsOriginal():bool
 	{
-		switch ($this->sectionId) {
-			case SparepartIds::ID_SECTION:
-				return $this->fields[SparepartIds::ID_IS_ORIGINAL] === 1;
-			case AccessoryIds::ID_SECTION:
-				return $this->fields[AccessoryIds::ID_IS_ORIGINAL] === 1;
-			default:
-				return false;
-		}
+        return match ((int)$this->sectionId) {
+            SparepartIds::ID_SECTION => $this->fields[SparepartIds::ID_IS_ORIGINAL] === 1,
+            AccessoryIds::ID_SECTION => $this->fields[AccessoryIds::ID_IS_ORIGINAL] === 1,
+            default => false,
+        };
 	}
 
 	private function getPriceDiscount():int
@@ -218,14 +221,11 @@ class FeedOffer
 	
 	private function getManufacturer() :string
 	{
-		switch ($this->sectionId) {
-			case SparepartIds::ID_SECTION:
-				return $this->fields[SparepartIds::ID_MANUFACTURER][0] ?? '';
-			case AccessoryIds::ID_SECTION:
-				return $this->fields[AccessoryIds::ID_MANUFACTURER][0] ?? '';
-			default:
-				return '';
-		}
+        return match ((int)$this->sectionId) {
+            SparepartIds::ID_SECTION => $this->fields[SparepartIds::ID_MANUFACTURER][0] ?? '',
+            AccessoryIds::ID_SECTION => $this->fields[AccessoryIds::ID_MANUFACTURER][0] ?? '',
+            default => '',
+        };
 	}
 	
 	private function getVendor() :string
@@ -239,26 +239,21 @@ class FeedOffer
 	
 	private function getVendorCode() :string
 	{
-		switch ($this->sectionId) {
-			case SparepartIds::ID_SECTION:
-				return $this->fields[SparepartIds::ID_VENDOR_CODE];
-			case AccessoryIds::ID_SECTION:
-				return $this->fields[AccessoryIds::ID_VENDOR_CODE];
-			default:
-				return '';
-		}
+        return match ((int)$this->sectionId) {
+            SparepartIds::ID_SECTION => $this->fields[SparepartIds::ID_VENDOR_CODE],
+            AccessoryIds::ID_SECTION => $this->fields[AccessoryIds::ID_VENDOR_CODE],
+            default => '',
+        };
 	}
 	
 	private function getShopSku() :string
 	{
-		switch ($this->sectionId) {
-			case SparepartIds::ID_SECTION:
-				return $this->fields[SparepartIds::ID_PRODUCT_CODE];
-			case AccessoryIds::ID_SECTION:
-				return $this->fields[AccessoryIds::ID_PRODUCT_CODE];
-			default:
-				return '';
-		}
+        return match ((int)$this->sectionId) {
+            SparepartIds::ID_SECTION => $this->fields[SparepartIds::ID_PRODUCT_CODE],
+            AccessoryIds::ID_SECTION => $this->fields[AccessoryIds::ID_PRODUCT_CODE],
+            WorkIds::ID_SECTION => $this->fields[WorkIds::ID_SERVICE_CODE],
+            default => '',
+        };
 	}
 	
 	private function getCountry() :string
@@ -271,26 +266,12 @@ class FeedOffer
 	{
 		switch ($this->sectionId) {
 			case SparepartIds::ID_SECTION:
-/*				if (isset($this->fields[SparepartIds::ID_YM_IMAGE]['image'])) {
-					return $this->fields[SparepartIds::ID_YM_IMAGE]['image'];
-				}*/
-				if (isset($this->fields[SparepartIds::ID_IMAGE]['image'])) {
-					return $this->fields[SparepartIds::ID_IMAGE]['image'];
-				}
-				else {
-					return FeedConfig::FEED_URL_NO_IMAGE;
-				}
-			case AccessoryIds::ID_SECTION:
-/*				if (isset($this->fields[AccessoryIds::ID_YM_IMAGE]['image'])) {
-					return $this->fields[AccessoryIds::ID_YM_IMAGE]['image'];
-				}*/
-				if (isset($this->fields[AccessoryIds::ID_IMAGE]['image'])) {
-					return $this->fields[AccessoryIds::ID_IMAGE]['image'];
-				}
-				else {
-					return FeedConfig::FEED_URL_NO_IMAGE;
-				}
-			default:
+				return $this->fields[SparepartIds::ID_IMAGE]['image'] ?? FeedConfig::FEED_URL_NO_IMAGE;
+            case AccessoryIds::ID_SECTION:
+				return $this->fields[AccessoryIds::ID_IMAGE]['image'] ?? FeedConfig::FEED_URL_NO_IMAGE;
+            case WorkIds::ID_SECTION:
+				return $this->fields[WorkIds::ID_IMAGE]['image'] ?? FeedConfig::FEED_URL_NO_IMAGE;
+            default:
 				return '';
 		}
 	}
@@ -309,6 +290,11 @@ class FeedOffer
 				$params['motors'] = $this->fields[AccessoryIds::ID_MOTOR];
 				$params['years'] = $this->fields[AccessoryIds::ID_YEAR];
 				return $params;
+			case WorkIds::ID_SECTION:
+				$params['models'] = $this->fields[WorkIds::ID_MODEL];
+				$params['motors'] = $this->fields[WorkIds::ID_MOTOR];
+				$params['years'] = $this->fields[WorkIds::ID_YEAR];
+				return $params;
 			default:
 				return $params;
 		}
@@ -316,14 +302,11 @@ class FeedOffer
 	
 	private function getAvailability(): int
 	{
-		switch ($this->sectionId) {
-			case SparepartIds::ID_SECTION:
-				return isset($this->fields[SparepartIds::ID_KHIMIKOV]) ? (int) $this->fields[SparepartIds::ID_KHIMIKOV] : 0;
-			case AccessoryIds::ID_SECTION:
-				return isset($this->fields[AccessoryIds::ID_KHIMIKOV]) ? (int) $this->fields[AccessoryIds::ID_KHIMIKOV] : 0;
-			default:
-				return 0;
-		}
+        return match ((int)$this->sectionId) {
+            SparepartIds::ID_SECTION => isset($this->fields[SparepartIds::ID_KHIMIKOV]) ? (int)$this->fields[SparepartIds::ID_KHIMIKOV] : 0,
+            AccessoryIds::ID_SECTION => isset($this->fields[AccessoryIds::ID_KHIMIKOV]) ? (int)$this->fields[AccessoryIds::ID_KHIMIKOV] : 0,
+            default => 0,
+        };
 	}
 	
 	public function renderOffer() :string
@@ -393,6 +376,8 @@ class FeedOffer
 				return '<url>' . FeedConfig::FEED_URL_SPAREPARTS . $this->id . '-' . $this->alias . '</url>' . "\n";
 			case AccessoryIds::ID_SECTION:
 				return '<url>' . FeedConfig::FEED_URL_ACCESSORIES . $this->id . '-' . $this->alias . '</url>' . "\n";
+			case WorkIds::ID_SECTION:
+				return '<url>' . FeedConfig::FEED_URL_WORKS . $this->id . '-' . $this->alias . '</url>' . "\n";
 			default:
 				return '';
 		}

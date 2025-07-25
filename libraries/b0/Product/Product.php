@@ -169,7 +169,7 @@ class Product
 		$this->openGraph = $this->setOpenGraph($item);
 		$this->availability = [
 			'ул. Кузнецовская, 52 к.13' => isset($fields[$productIds::ID_SEDOVA]) ? $this->setAvailability($fields[$productIds::ID_SEDOVA]) : 0,
-			'ш. Революции, 84-К' => isset($fields[$productIds::ID_KHIMIKOV]) ? $this->setAvailability($fields[$productIds::ID_KHIMIKOV]) : 0,
+			'Кудровский пр-д, 5' => isset($fields[$productIds::ID_KHIMIKOV]) ? $this->setAvailability($fields[$productIds::ID_KHIMIKOV]) : 0,
 			'ул. Портовая, 15-Б' => isset($fields[$productIds::ID_ZHUKOVA]) ? $this->setAvailability($fields[$productIds::ID_ZHUKOVA]) : 0,
 			'1-й Верхний пер., 10' => isset($fields[$productIds::ID_KULTURY]) ? $this->setAvailability($fields[$productIds::ID_KULTURY]) : 0,
 			'ул. Планерная, 15-Б' => isset($fields[$productIds::ID_PLANERNAYA]) ? $this->setAvailability($fields[$productIds::ID_PLANERNAYA]) : 0,

@@ -37,6 +37,40 @@ class CobaltControllerB0Feed extends JControllerAdmin
         $this->sendMail('200: Файлы сформированы');
 		JExit('200: Файлы сформированы');
 	}
+
+    public function createSingleFeed()
+    {
+        // Получаем название позиции из запроса
+        $feedName = $this->input->getString('feed_name', '');
+
+        // Проверяем, существует ли такая позиция в конфигурации
+        if (!array_key_exists($feedName, FeedConfigFeeds::FEED_CONFIG_FEEDS)) {
+            $this->setMessage('Фид не найден', 'error');
+            return false;
+        }
+
+        // Получаем конфигурацию для данной позиции
+        $feedConfig = FeedConfigFeeds::FEED_CONFIG_FEEDS[$feedName];
+//        JExit(b0debug($feedConfig));
+        // Если фид не требуется создавать, прекращаем выполнение
+        if (!$feedConfig['isNeed']) {
+            $this->sendMail('200: Фид не требуется создавать');
+            JExit('200: Фид не требуется создавать');
+        }
+
+        // Создаем экземпляр класса Feed
+        $this->feed = new Feed($feedConfig);
+        //JExit(b0debug($this->feed));
+        if ($this->feed->render()) {
+            $message = '200: Файл '. $feedConfig['name'] .' сформирован';
+        }
+        else {
+            $message = '200: Файл '. $feedConfig['name'] .' не сформирован';
+        }
+        $this->sendMail($message);
+        JExit($message);
+
+    }
 	
 	private function sendMail($messageBody): bool
 	{

@@ -89,7 +89,7 @@ unset($this->document->_generator);
                 <p>Вам есть в чем нас упрекнуть, есть предложения по улучшению оказываемых нами услуг или Вы хотите кого-то из нас лично отметить.</p>
                 <ul>
                     <li>
-                        напишите нам на электронную почту <strong><a href="mailto:vesta-direktor@mail.ru">vesta-direktor@mail.ru</a></strong>
+                        напишите нам на электронную почту <a href="mailto:9283220@mail.ru">9283220@mail.ru</a>
                     </li>
                 </ul>
             </div>

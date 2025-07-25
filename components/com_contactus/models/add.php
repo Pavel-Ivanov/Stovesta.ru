@@ -22,7 +22,6 @@ class ContactusModelAdd extends JModelLegacy
 		    $config->get( 'mailfrom' ),
 		    $config->get( 'fromname' ) 
 		);
-		 
 
 		if (isset($params->field))
 		{	
@@ -61,9 +60,9 @@ class ContactusModelAdd extends JModelLegacy
 
 		if ((isset($params->sms_flag)) && ($params->sms_flag == 1)){
 			//$smsText = $this->getSMStext($data, $params);
-			$smsText = $params->sms_text.' '.$data['field1'].' '.$data['field2'];
-			$smsNumber = $params->sms_self_number;
-			$query = "http://gate.sms-manager.ru/_getsmsd.php?user=logan&password=753636&sender=StoVesta&SMSText=".$smsText."&GSM=".$smsNumber;
+//			$smsText = $params->sms_text.' '.$data['field1'].' '.$data['field2'];
+//			$smsNumber = $params->sms_self_number;
+//			$query = "http://gate.sms-manager.ru/_getsmsd.php?user=logan&password=753636&sender=StoVesta&SMSText=".$smsText."&GSM=".$smsNumber;
 
 //			$ch = curl_init("http://sms.ru/sms/send");
 //			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -76,7 +75,36 @@ class ContactusModelAdd extends JModelLegacy
 //			));
 //			$bd = curl_exec($ch);
 //			curl_close($ch);
-		}
+
+            $call_value = $_COOKIE['_ct_session_id']; /* ID сессии Calltouch, полученный из cookie */
+            $ct_site_id = '{site_id}';
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-type: application/x-www-form-urlencoded;charset=utf-8"));
+            curl_setopt($ch, CURLOPT_URL,'https://api.calltouch.ru/calls-service/RestAPI/requests/'.$ct_site_id.'/register/');
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS,
+                "fio=".urlencode($_POST['name'])
+                ."&phoneNumber=".$_POST['phone']
+                ."&email=".$_POST['email']
+                ."&subject=".urlencode('Заявка с сайта')
+                ."".($call_value !== 'undefined' ? "&sessionId=".$call_value : ""));
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $calltouch = curl_exec ($ch);
+            curl_close ($ch);
+
+/*
+            {site_id} — ID Вашего сайта внутри ЛК Calltouch. Указывается без фигурных скобок. Его можно получить в разделе:  Интеграции /   Отправка данных во внешние системы / API и Webhooks / API / ID личного кабинета.
+            mod_id — уникальный идентификатор скрипта Calltouch. Его можно получить в разделе:  Интеграции /   Отправка данных во внешние системы / API и Webhooks / API / ID счетчика.
+            При использовании такого метода, следует обратить внимание на 3 пункта:
+
+            ID сессии Calltouch, который необходимо отправить в качестве параметра sessionId API-запроса на создание заявки, необходимо передавать в PHP-обработчик с клиентской стороны, получая значение ID сессии из соответствующей переменной.
+            Для корректной передачи кириллических символов в запросе и обхода проблем с кодировкой, необходимо применять PHP-функцию urlencode ко всем PHP-переменным, передаваемым в качестве входных параметров API-запроса. Т.е., если ФИО клиента находится в $_POST['name'], то в API-запрос ее надо добавить как urlencode($_POST['name']).
+            В API-запросе в явном виде должна быть указана кодировка utf-8.
+            Во входных параметрах fio, phoneNumber, email и subject скрипта выше указаны тестовые данные формы соответственно: $_POST['name'], $_POST['phone'], $_POST['email'] и значение "Заявка с сайта". При написании реального скрипта на сервере для отправки заявок в Calltouch, необходимо настроить передачу данных, введенных клиентом на отправляемой форме, в качестве значений соответствующих входных параметров API-запроса на создание заявки.
+*/
+
+
+        }
 
 		
 		$mailer->IsHTML(true);

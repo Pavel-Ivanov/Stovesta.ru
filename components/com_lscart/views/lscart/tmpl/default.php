@@ -97,7 +97,7 @@ $user = JFactory::getUser();
                         <label class="uk-form-label" style="width: 150px" for="form-shop">Магазин*</label>
                         <select v-model="shop" id="form-shop">
                             <option value="<?= CartConfig::CART_ID_GAGARINA ?>">ул. Кузнецовская, 52 к.13</option>
-                            <option value="<?= CartConfig::CART_ID_KHIMIKOV ?>">ш. Революции, д. 84-К</option>
+                            <option value="<?= CartConfig::CART_ID_KHIMIKOV ?>">Кудровский пр-д, 5</option>
                             <option value="<?= CartConfig::CART_ID_KULTURY ?>">1-й Верхний пер., 10</option>
                             <option value="<?= CartConfig::CART_ID_ZHUKOVA ?>">ул. Портовая, 15-Б</option>
                             <option value="<?= CartConfig::CART_ID_PLANERNAYA ?>">ул. Планерная, 15-Б</option>
@@ -178,7 +178,7 @@ $user = JFactory::getUser();
             customerName: '',
             customerPhone: '',
             customerEmail: '',
-            shop: '00-000023',
+            shop: 'ВВ-000001',
             showConfirm: false
         },
         computed: {

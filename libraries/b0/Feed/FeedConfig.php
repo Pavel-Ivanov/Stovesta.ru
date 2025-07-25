@@ -8,7 +8,8 @@ class FeedConfig
 	public const FEED_URL = 'https://stovesta.ru';    // Ссылка на сайт
 	public const FEED_URL_SPAREPARTS = self::FEED_URL . '/spareparts/item/';   // Ссылка на раздел запчасти
 	public const FEED_URL_ACCESSORIES = self::FEED_URL . '/accessories/item/'; // Ссылка на раздел аксессуары
-	
+	public const FEED_URL_WORKS = self::FEED_URL . '/repair/item/'; // Ссылка на раздел работы
+
 	public const FEED_URL_NO_IMAGE = 'images/elements/no-photo.png';    //
 
 	public const FEED_CURRENCY = 'RUB';    // Валюта

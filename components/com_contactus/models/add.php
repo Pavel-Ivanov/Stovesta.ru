@@ -1,13 +1,5 @@
 <?php
-/**
- * @package Joomly Contactus for Joomla! 2.5 - 3.x
- * @version 3.15
- * @author Artem Yegorov
- * @copyright (C) 2016- Artem Yegorov
- * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
-**/
-
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die();
 jimport('joomla.application.component.model');
 
 class ContactusModelAdd extends JModelLegacy
@@ -23,94 +15,113 @@ class ContactusModelAdd extends JModelLegacy
 		    $config->get( 'fromname' ) 
 		);
 
-		if (isset($params->field))
-		{	
-			foreach ($params->field as $field)
-			{
-				if ($field->type == "Email")
-				{
+		if (isset($params->field)) {
+			foreach ($params->field as $field) {
+				if ($field->type === "Email") {
 					$mailer->addReplyTo($data[$field->name]);
 				}
 			}
 		}
 
 		$mailer->setSender($sender);
-		
 		$mail = $this->getRecipient($params->admin_mail);
 		$mailer->addRecipient($mail);
-		
 		$subject = $this->getSubject($params->mail_subject_text);
 		$mailer->setSubject($subject);
-		
 		$body = $this->getBody($data, $params);
 		$mailer->setBody($body);
-		
-		if (file_exists($_FILES["file"]["tmp_name"][0])){
-			$attachments = array();
-			$name = array();
-			for ($i = 0; $i < count($_FILES["file"]["name"]);$i++ ){
-				if ($_FILES["file"]["tmp_name"][$i] !=='')
-				{
-					$attachments[] =  $_FILES["file"]["tmp_name"][$i];
-					$name[]= $_FILES["file"]["name"][$i];
-				}
-			}	
-			$mailer->addAttachment($attachments, $name);
-		}
+        $mailer->IsHTML(true);
+        $mailer->Send();
 
-		if ((isset($params->sms_flag)) && ($params->sms_flag == 1)){
+
+        /*		if (file_exists($_FILES["file"]["tmp_name"][0])){
+                    $attachments = array();
+                    $name = array();
+                    for ($i = 0; $i < count($_FILES["file"]["name"]);$i++ ){
+                        if ($_FILES["file"]["tmp_name"][$i] !=='')
+                        {
+                            $attachments[] =  $_FILES["file"]["tmp_name"][$i];
+                            $name[]= $_FILES["file"]["name"][$i];
+                        }
+                    }
+                    $mailer->addAttachment($attachments, $name);
+                }*/
+
+        /*		if ((isset($params->sms_flag)) && ($params->sms_flag == 1)){
 			//$smsText = $this->getSMStext($data, $params);
-//			$smsText = $params->sms_text.' '.$data['field1'].' '.$data['field2'];
-//			$smsNumber = $params->sms_self_number;
-//			$query = "http://gate.sms-manager.ru/_getsmsd.php?user=logan&password=753636&sender=StoVesta&SMSText=".$smsText."&GSM=".$smsNumber;
+			$smsText = $params->sms_text.' '.$data['field1'].' '.$data['field2'];
+			$smsNumber = $params->sms_self_number;
+			$query = "http://gate.sms-manager.ru/_getsmsd.php?user=logan&password=753636&sender=StoVesta&SMSText=".$smsText."&GSM=".$smsNumber;
 
-//			$ch = curl_init("http://sms.ru/sms/send");
-//			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-//			curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-//			curl_setopt($ch, CURLOPT_POSTFIELDS, array(
-//				"api_id"		=>	$params->sms_api_id,
-//				"to"			=>	$params->sms_self_number,
-//				"text"		=>	$sms_text,
-//				"partner_id" => "108497"
-//			));
-//			$bd = curl_exec($ch);
-//			curl_close($ch);
+			$ch = curl_init("http://sms.ru/sms/send");
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+				"api_id"		=>	$params->sms_api_id,
+				"to"			=>	$params->sms_self_number,
+				"text"		=>	$sms_text,
+				"partner_id" => "108497"
+			));
+			$bd = curl_exec($ch);
+			curl_close($ch);
+        }*/
 
-            $call_value = $_COOKIE['_ct_session_id']; /* ID сессии Calltouch, полученный из cookie */
-            $ct_site_id = '{site_id}';
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-type: application/x-www-form-urlencoded;charset=utf-8"));
-            curl_setopt($ch, CURLOPT_URL,'https://api.calltouch.ru/calls-service/RestAPI/requests/'.$ct_site_id.'/register/');
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS,
-                "fio=".urlencode($_POST['name'])
-                ."&phoneNumber=".$_POST['phone']
-                ."&email=".$_POST['email']
-                ."&subject=".urlencode('Заявка с сайта')
-                ."".($call_value !== 'undefined' ? "&sessionId=".$call_value : ""));
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $calltouch = curl_exec ($ch);
-            curl_close ($ch);
+//        b0debug($data);
+//        b0dd($params);
 
-/*
-            {site_id} — ID Вашего сайта внутри ЛК Calltouch. Указывается без фигурных скобок. Его можно получить в разделе:  Интеграции /   Отправка данных во внешние системы / API и Webhooks / API / ID личного кабинета.
-            mod_id — уникальный идентификатор скрипта Calltouch. Его можно получить в разделе:  Интеграции /   Отправка данных во внешние системы / API и Webhooks / API / ID счетчика.
-            При использовании такого метода, следует обратить внимание на 3 пункта:
-
-            ID сессии Calltouch, который необходимо отправить в качестве параметра sessionId API-запроса на создание заявки, необходимо передавать в PHP-обработчик с клиентской стороны, получая значение ID сессии из соответствующей переменной.
-            Для корректной передачи кириллических символов в запросе и обхода проблем с кодировкой, необходимо применять PHP-функцию urlencode ко всем PHP-переменным, передаваемым в качестве входных параметров API-запроса. Т.е., если ФИО клиента находится в $_POST['name'], то в API-запрос ее надо добавить как urlencode($_POST['name']).
-            В API-запросе в явном виде должна быть указана кодировка utf-8.
-            Во входных параметрах fio, phoneNumber, email и subject скрипта выше указаны тестовые данные формы соответственно: $_POST['name'], $_POST['phone'], $_POST['email'] и значение "Заявка с сайта". При написании реального скрипта на сервере для отправки заявок в Calltouch, необходимо настроить передачу данных, введенных клиентом на отправляемой форме, в качестве значений соответствующих входных параметров API-запроса на создание заявки.
-*/
-
-
+        $call_value = $_COOKIE['_ct_session_id']; /* ID сессии Calltouch, полученный из cookie */
+        $ct_site_id = '74310';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-type: application/x-www-form-urlencoded;charset=utf-8"));
+        curl_setopt($ch, CURLOPT_URL,'https://api.calltouch.ru/calls-service/RestAPI/requests/'.$ct_site_id.'/register/');
+        curl_setopt($ch, CURLOPT_POST, 1);
+        // Initialize variables to store field names
+        $name_field = '';
+        $phone_field = '';
+        $email_field = '';
+        
+        // Find field names based on titles
+        if (isset($params->field)) {
+            foreach ($params->field as $field) {
+                if ($field->title === "Ваше имя") {
+                    $name_field = $field->name;
+                } elseif ($field->title === "Ваш телефон") {
+                    $phone_field = $field->name;
+                } elseif ($field->title === "Email") {
+                    $email_field = $field->name;
+                }
+            }
         }
+        
+        // Get values from $data using field names
+        $fio = isset($name_field) && isset($data[$name_field]) ? $data[$name_field] : '';
+        $phone = isset($phone_field) && isset($data[$phone_field]) ? $data[$phone_field] : '';
+        $email = isset($email_field) && isset($data[$email_field]) ? $data[$email_field] : '';
+        $subject = isset($params->mail_subject_text) && isset($data[$params->mail_subject_text]) ? $data[$params->mail_subject_text] : '';
+        
+        curl_setopt($ch, CURLOPT_POSTFIELDS,
+            "fio=".urlencode($fio)
+            ."&phoneNumber=".$phone
+            ."&email=".$email
+            ."&subject=".$subject
+            ."".($call_value !== 'undefined' ? "&sessionId=".$call_value : ""));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $calltouch = curl_exec ($ch);
+        curl_close ($ch);
 
-		
-		$mailer->IsHTML(true);
-		$mailer->Send();
-	
-	}
+        /*
+        {site_id} — ID Вашего сайта внутри ЛК Calltouch. Указывается без фигурных скобок. Его можно получить в разделе:  Интеграции /   Отправка данных во внешние системы / API и Webhooks / API / ID личного кабинета.
+        mod_id — уникальный идентификатор скрипта Calltouch. Его можно получить в разделе:  Интеграции /   Отправка данных во внешние системы / API и Webhooks / API / ID счетчика.
+        При использовании такого метода, следует обратить внимание на 3 пункта:
+
+        ID сессии Calltouch, который необходимо отправить в качестве параметра sessionId API-запроса на создание заявки, необходимо передавать в PHP-обработчик с клиентской стороны, получая значение ID сессии из соответствующей переменной.
+        Для корректной передачи кириллических символов в запросе и обхода проблем с кодировкой, необходимо применять PHP-функцию urlencode ко всем PHP-переменным, передаваемым в качестве входных параметров API-запроса. Т.е., если ФИО клиента находится в $_POST['name'], то в API-запрос ее надо добавить как urlencode($_POST['name']).
+        В API-запросе в явном виде должна быть указана кодировка utf-8.
+        Во входных параметрах fio, phoneNumber, email и subject скрипта выше указаны тестовые данные формы соответственно: $_POST['name'], $_POST['phone'], $_POST['email'] и значение "Заявка с сайта". При написании реального скрипта на сервере для отправки заявок в Calltouch, необходимо настроить передачу данных, введенных клиентом на отправляемой форме, в качестве значений соответствующих входных параметров API-запроса на создание заявки.
+        */
+
+
+    }
 
 /*	function sendSMS($data,$params,$id, $host) {
 		$query = "http://gate.sms-manager.ru/_getsmsd.php?user=logan&password=753636&sender=StoVesta&SMSText=".$params['text']."&GSM=".$params['number'];
@@ -121,8 +132,7 @@ class ContactusModelAdd extends JModelLegacy
 
 	function getParams($module_id){
 		$query = $this->_db->getQuery(true);
-		if ($module_id > 0)
-		{	
+		if ($module_id > 0) {
 			$query->select('params')
 			->from('#__modules')
 			->where("module='mod_contactus' AND id={$module_id}");
@@ -178,12 +188,9 @@ class ContactusModelAdd extends JModelLegacy
 		if (isset($data["created_at"])){ 
 			$body = '<br><b>'.JText::_('COM_CONTACTUS_CREATED_AT').'</b>: '.$data["created_at"];
 		}	
-		if (isset($params->field))
-		{	
-			foreach ($params->field as $field)
-			{
-				if ($field->type !== "Text")
-				{
+		if (isset($params->field)) {
+			foreach ($params->field as $field) {
+				if ($field->type !== "Text") {
 					$body = $body . '<br><b>'.$field->title.'</b>: '.$data[$field->name];	
 				}
 			}

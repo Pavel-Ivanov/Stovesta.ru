@@ -64,7 +64,7 @@ class ContactusControllerAdd extends ContactusController
 				}
 			}
 			//Check added files errors
-			if (file_exists($_FILES["file"]["tmp_name"][0])){
+/*			if (file_exists($_FILES["file"]["tmp_name"][0])){
 			
 				for ($i = 0; $i < count($_FILES["file"]["name"]);$i++ ){
 					
@@ -88,7 +88,7 @@ class ContactusControllerAdd extends ContactusController
 						}	
 					}
 				}
-			}
+			}*/
 
 			//Bind and store to db the form data
 			$data["data"] = json_encode($data);

@@ -12,8 +12,6 @@ JImport('b0.fixtures');
  */
 class CobaltControllerB0Feed extends JControllerAdmin
 {
-//	public int $sectionId;
-//	public string $modelName;
 	public Feed $feed;
 	
 	public function create(): void

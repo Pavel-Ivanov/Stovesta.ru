@@ -1,28 +1,25 @@
 <?php
 defined('_JEXEC') or die();
 
+JImport('b0.FeedGenerator.FeedDefinitions');
+
 class FeedGeneratorFactory
 {
-    public function createFeedGenerator($feedName)
+    public function getFeedDefinitions(): array
     {
-        $feedConfig = $this->getFeedConfig($feedName);
-        $className = $feedConfig['type'] . 'FeedGenerator';
-
-        if (!class_exists($className)) {
-            throw new Exception("Class $className does not exist");
-        }
-
-        return new $className($feedConfig);
+        return FeedDefinitions::FEEDS;
     }
 
-    private function getFeedConfig($feedName)
+    /**
+     * Гарантирует существование директории для файла
+     */
+    public function ensureDirectory(string $filePath): void
     {
-        // Логика определения конфигурации фида на основе имени
-        // Например:
-        $allConfigs = FeedGeneratorConfig::getAllConfigs();
-        if (!isset($allConfigs[$feedName])) {
-            throw new Exception("Feed configuration for '$feedName' not found");
+        $fullPath = JPATH_ROOT . $filePath;
+        $dir = dirname($fullPath);
+        if (!is_dir($dir)) {
+            jimport('joomla.filesystem.folder');
+            JFolder::create($dir);
         }
-        return $allConfigs[$feedName];
     }
 }

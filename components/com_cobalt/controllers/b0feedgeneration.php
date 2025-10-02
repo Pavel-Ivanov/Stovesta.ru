@@ -8,6 +8,7 @@ defined('_JEXEC') or die();
 
 JImport('b0.FeedGenerator.FeedGeneratorConfig');
 JImport('b0.FeedGenerator.FeedGenerationManager');
+JImport('b0.FeedGenerator.FeedGeneratorFactory');
 
 class CobaltControllerB0FeedGeneration extends JControllerAdmin
 {
@@ -17,7 +18,8 @@ class CobaltControllerB0FeedGeneration extends JControllerAdmin
     {
         parent::__construct();
         $feedGeneratorFactory = new FeedGeneratorFactory();
-        $this->feedManager = new FeedGenerationManager($feedGeneratorFactory);    }
+        $this->feedManager = new FeedGenerationManager($feedGeneratorFactory);
+    }
 
     /**
      * Генерация всех фидов

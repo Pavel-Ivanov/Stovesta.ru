@@ -3,6 +3,7 @@ defined('_JEXEC') or die();
 
 JImport('b0.Feed.FeedConfig');
 JImport('b0.Product.ProductConfig');
+JImport('b0.Service.ServiceConfig');
 JImport('b0.Sparepart.SparepartIds');
 JImport('b0.Accessory.AccessoryIds');
 JImport('b0.Work.WorkIds');
@@ -19,6 +20,7 @@ class FeedOffer
 	private bool $isSpecial;
 	private bool $isOriginal;
 	private int $priceGeneral;
+	private int $priceGold;
 	private int $priceSpecial;
 	private int $priceDelivery;
 	private int $priceDiscount;
@@ -43,6 +45,7 @@ class FeedOffer
 		$this->isSpecial = $this->getIsSpecial();
 		$this->isOriginal = $this->getIsOriginal();
 		$this->priceGeneral = $this->getPriceGeneral();
+		$this->priceGold = $this->getPriceGold();
 		$this->priceSpecial = $this->getPriceSpecial();
 		$this->priceDelivery = $this->getPriceDelivery();
 		$this->priceDiscount = $this->getPriceDiscount();
@@ -154,6 +157,15 @@ class FeedOffer
             SparepartIds::ID_SECTION => (int)$this->fields[SparepartIds::ID_PRICE_GENERAL],
             AccessoryIds::ID_SECTION => (int)$this->fields[AccessoryIds::ID_PRICE_GENERAL],
             WorkIds::ID_SECTION => (int)$this->fields[WorkIds::ID_PRICE_GENERAL],
+            default => 0,
+        };
+	}
+
+	private function getPriceGold(): int
+	{
+        return match ((int)$this->sectionId) {
+            SparepartIds::ID_SECTION, AccessoryIds::ID_SECTION => (int) round($this->isOriginal ? $this->priceGeneral * ProductConfig::PRICE_DISCOUNT_ORIGINAL_GOLD : $this->priceGeneral * ProductConfig::PRICE_DISCOUNT_NON_ORIGINAL_GOLD),
+            WorkIds::ID_SECTION => (int) round($this->priceGeneral * ServiceConfig::DISCOUNT_PRICE_GOLD),
             default => 0,
         };
 	}
@@ -385,19 +397,20 @@ class FeedOffer
 
 	private  function renderPrice():string
 	{
-		$price = $this->isSpecial ? $this->priceSpecial : $this->priceGeneral;
+		$price = $this->priceGold;
+//		$price = $this->isSpecial ? $this->priceSpecial : $this->priceGeneral;
 //		$price = $this->isSpecial && $this->priceDiscount >= 5 ? $this->priceSpecial : $this->priceGeneral;
 		return '<price>'.$price.'.00</price>' . "\n";
 	}
 	
 	private  function renderOldPrice():string
 	{
-		if (!$this->isSpecial) {
+/*		if (!$this->isSpecial) {
 			return '';
 		}
 		if ($this->priceDiscount <= 5) {
 			return '';
-		}
+		}*/
 		return '<oldprice>'.$this->priceGeneral.'.00</oldprice>' . "\n";
 	}
 	
